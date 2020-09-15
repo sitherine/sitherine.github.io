@@ -51,10 +51,10 @@ scp -r local_folder remote_ip:remote_folder
 
 第<span class="hljs-number">2</span>个没有指定用户名，命令执行后需要输入用户名和密码</code></pre>]]></content>
       <categories>
-        <category>系统工具</category>
+        <category>终端</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>终端</tag>
       </tags>
   </entry>
   <entry>
@@ -87,10 +87,73 @@ context
 <p>解释:<br>‘&amp;&amp;’: 顺序执行执行作用  如a &amp;&amp; b, a成功后才会执行b, 否则b不会执行<br>‘||’: 如a||b a执行失败才会执行b,a 成功了就不会执行b了<br>‘;’  : 两条shell要使用逗号隔开<br>():  为了将多条命令当作一个整体看, 如例子中 ( echo “failed”; exit ) 如果wget执行失败会执行echo 和 exit退出脚本这两个动作, 一定要加上(), 不然exit会被当成独立的语句,所以无论怎么都会被执行到, 这就违背了我们的意图了</p>
 ]]></content>
       <categories>
-        <category>待完善</category>
+        <category>终端</category>
       </categories>
       <tags>
-        <tag>Linux-系统工具</tag>
+        <tag>终端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PM2 ---Node 应用进程管理器</title>
+    <url>/2020/05/17/PM2/</url>
+    <content><![CDATA[<p>pm2 start build/dev-server.js<br>pm2 start build/dev-server.js –name XXX<br><a href="https://www.cnblogs.com/lxg0/p/7771229.html" target="_blank" rel="noopener">https://www.cnblogs.com/lxg0/p/7771229.html</a></p>
+<p>pm2是一个带有负载均衡功能的 Node 应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。<br>它非常适合IaaS结构，但不要把它用于PaaS方案（随后将开发Paas的解决方案）.</p>
+<p>主要特性：</p>
+<p>内建负载均衡（使用 Node cluster 集群模块）</p>
+<p>后台运行</p>
+<p>0 秒停机重载</p>
+<p>具有 Ubuntu 和 CentOS 的启动脚本</p>
+<p>停止不稳定的进程（避免无限循环）</p>
+<p>控制台检测</p>
+<p>提供 HTTP API</p>
+<p>远程控制和实时的接口 API（Nodejs 模块，允许和 PM2 进程管理器交互）</p>
+<pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">app</span></code></pre>
+
+<pre><code class="hljs crmsh">pm2 <span class="hljs-literal">start</span> app.js</code></pre>
+
+
+
+
+<p><a href="http://www.imooc.com/read/26/article/234" target="_blank" rel="noopener">http://www.imooc.com/read/26/article/234</a></p>
+<p>补充：PM2 常用命令</p>
+<p>通过 PM2 跑服务器的时候，是可以进行集群配置的，也就是指定在几个核上运行几个进程：</p>
+<p>pm2 start app.js -i 2<br>-i 后面跟的 2 表示启动 2 个 server 实例，如果输入 0 的话，则按照当前服务器实际的 CPU 核数来启动多个 server，启动后，我们通过 pm2 ls 来看看已经启动的实例</p>
+<p>PM2 实时扩容集群<br>如果发现线上的服务响应比较吃力，而 CPU 核数没有吃满的话，我们可以实时扩容集群，通过 scale 命令来实现，比如：</p>
+<p>pm2 scale app +1</p>
+]]></content>
+      <categories>
+        <category>环境部署</category>
+      </categories>
+      <tags>
+        <tag>PM2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代理调试Charles</title>
+    <url>/2020/09/15/debug-charles/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://cloud.tencent.com/developer/article/1335298" target="_blank" rel="noopener">解决Charles https抓包显示<unknown></a><br><a href="https://zhuanlan.zhihu.com/p/35498250" target="_blank" rel="noopener">Charles抓https显示unknown解决方法</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端缓存</title>
+    <url>/2020/09/15/cache-front/</url>
+    <content><![CDATA[<blockquote>
+<p>文章参考<br><a href="https://learnku.com/articles/43143" target="_blank" rel="noopener">[故事] 浏览器缓存原理你真的懂吗？一篇漫画故事带你理解透顶！</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>缓存</tag>
       </tags>
   </entry>
   <entry>
@@ -108,7 +171,7 @@ context
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>手机调试</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -126,7 +189,7 @@ context
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>手机调试</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -145,7 +208,7 @@ context
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>手机调试</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -164,7 +227,7 @@ context
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>手机调试</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -193,7 +256,7 @@ context
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>手机调试</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -255,10 +318,53 @@ git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
 
 ]]></content>
       <categories>
-        <category>待完善</category>
+        <category>Git开发协作</category>
       </categories>
       <tags>
-        <tag>Git-开发协作</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git实现代码自动部署</title>
+    <url>/2020/05/18/git-auto-deploy/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文章<br><a href="https://www.jianshu.com/p/8b774fdfd29a" target="_blank" rel="noopener">使用git实现代码自动部署</a><br><a href="https://www.cnblogs.com/peteremperor/p/7754195.html" target="_blank" rel="noopener">使用Git的hook实现代码的自动部署</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git-init初始化</title>
+    <url>/2020/09/15/git-init/</url>
+    <content><![CDATA[<p>创建新的仓库并绑定<br>…or create a new repository on the command line</p>
+<pre><code class="hljs properties"><span class="hljs-attr">echo</span> <span class="hljs-string">"# blog-create" &gt;&gt; README.md</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">init</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">add README.md</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">commit -m "first commit"</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">branch -M master</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">remote add origin git@github.com:sitherine/blog-create.git</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">push -u origin master</span></code></pre>
+
+<p>已有仓库绑定<br>…or push an existing repository from the command line</p>
+<pre><code class="hljs crmsh">git remote add origin git@github.com:sitherine/blog-create.git
+git branch -M <span class="hljs-literal">master</span>
+git push -u origin <span class="hljs-literal">master</span></code></pre>
+
+<p>仓库换绑（http协议链接转为ssh）</p>
+<pre><code class="hljs dsconfig"><span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">git@</span><span class="hljs-string">github.</span><span class="hljs-string">com:username/</span><span class="hljs-string">repository.</span><span class="hljs-string">git</span></code></pre>
+
+<p>查看当前仓库信息</p>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre>]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -293,24 +399,77 @@ git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
 
 Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
       <categories>
-        <category>开发协作</category>
+        <category>Git开发协作</category>
       </categories>
       <tags>
         <tag>Git</tag>
       </tags>
   </entry>
   <entry>
+    <title>Git配置多个SSH KEY</title>
+    <url>/2020/05/15/git-ssh-key/</url>
+    <content><![CDATA[<p>###生成ssh key</p>
+<pre><code class="hljs arcade">ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa -C <span class="hljs-string">"xx-email"</span>
+ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_gitlab -C <span class="hljs-string">"xx-email"</span></code></pre>
+
+<p>上面的id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出 <code>id_rsa</code> 和id_rsa_gitlab.pub两个文件，id_rsa.pub里保存的就是我们要使用的key。</p>
+<p>​ 上面的oschina2_id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出oschina2_id_rsa和oschina2_id_rsa.pub两个文件，oschina2_id_rsa.pub里保存的就是我们要使用的key。</p>
+<p>查看你的 public key，并把他添加到码云（Gitee.com）,复制内容填入即可 SSH key添加地址</p>
+<pre><code class="hljs awk">cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub
+<span class="hljs-comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></code></pre>
+
+<p>###配置config文件<br>配置<code>.ssh</code>文件下的config文件</p>
+<pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/.ssh/</span>
+cat config</code></pre>
+
+<p>config文件内容</p>
+<pre><code class="hljs routeros">Host github.com
+HostName github.com
+User cloverhuang
+IdentityFile ~/.ssh/id_rsa
+
+Host gitlab.com
+HostName gitlab.com
+User perry
+IdentityFile ~/.ssh/oschina_id_rsa</code></pre>
+
+<p>Host example                 # 关键词<br>HostName example.com         # 主机地址<br>User root                    # 用户名<br>IdentityFile ~/.ssh/id_rsa   # 认证文件<br>Port 22                      # 指定端口</p>
+<p>192.168.10.?表示匹配 192.168.0.[0-9] 的 IP,是内网服务器的地址,使用localtest</p>
+<p>​ git.oschina.net oschina2</p>
+<p>​ 通过执行 <code>$ ssh example</code> 我就可以登录我的服务器。而不需要敲更多的命令 <code>$ ssh root@example.com</code>。又如我们想要向服务器传文件 $ scp a.txt example:/home/user_name。比以前方便多了。</p>
+<p>作者：欧阳馒头<br>链接：<a href="https://www.jianshu.com/p/9c06e8de3eba" target="_blank" rel="noopener">https://www.jianshu.com/p/9c06e8de3eba</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx配置详解</title>
+    <url>/2020/05/16/nginx/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/bluestorm/p/4574688.html" target="_blank" rel="noopener">https://www.cnblogs.com/bluestorm/p/4574688.html</a></p>
+]]></content>
+      <categories>
+        <category>环境部署</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iTerm2 Profiles快捷登录ssh</title>
     <url>/2020/05/16/iTerm/</url>
     <content><![CDATA[<blockquote>
-<p>参考文档<br><a href="https://blog.csdn.net/Soinice/article/details/97559183" target="_blank" rel="noopener">macOS Mojave（配置篇）：使用iTerm2 Profiles快捷登录ssh（自动连接远程服务器）</a></p>
+<p>参考文档<br><a href="https://blog.csdn.net/Soinice/article/details/97559183" target="_blank" rel="noopener">iTerm2 Profiles快捷登录ssh（自动连接远程服务器）</a><br><a href="https://juejin.im/post/6844903962324238350" target="_blank" rel="noopener">iTerm2摸鱼指北</a></p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>待完善</category>
+        <category>终端</category>
       </categories>
       <tags>
-        <tag>iTerm2-系统工具</tag>
+        <tag>终端</tag>
       </tags>
   </entry>
 </search>

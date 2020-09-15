@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="sitherine">
   <meta name="keywords" content="">
-  <title>标签 - 手机调试 - Sihterine&#39;S BLOG</title>
+  <title>归档 - Sihterine&#39;S BLOG</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -46,11 +46,11 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -153,18 +153,12 @@
                 
 
 <div class="list-group">
-<!--  <p class="h4">共计 5 篇文章</p>-->
+  <p class="h4">共计 17 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
-    
-    <a href="/2020/05/01/debug/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端调试工具汇总</span>
-      <span style="float: right;">05-01</span>
-    </a>
-  
     
     <a href="/2020/05/01/debug-genymotion/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">模拟器调试：Genymotion安卓模拟器</span>
@@ -178,18 +172,30 @@
     </a>
   
     
-    <a href="/2020/05/01/debug-chrome/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">浏览器调试：Chrome连接手机调试</span>
-      <span style="float: right;">05-01</span>
-    </a>
-  
-    
     <a href="/2020/05/01/debug-safari/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">浏览器调试：Safari连接手机调试</span>
       <span style="float: right;">05-01</span>
     </a>
   
+    
+    <a href="/2020/05/01/debug-chrome/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">浏览器调试：Chrome连接手机调试</span>
+      <span style="float: right;">05-01</span>
+    </a>
+  
 </div>
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/archives/2020/05/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2020/05/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -287,7 +293,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - 手机调试&nbsp;",
+        "归档&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
