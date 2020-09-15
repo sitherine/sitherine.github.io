@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Linux scp命令详解</title>
+    <url>/2020/05/16/Linux-scp/</url>
+    <content><![CDATA[<blockquote>
+<p>文档参考<br><a href="https://www.cnblogs.com/ftl1012/p/scp.html" target="_blank" rel="noopener">Linux scp命令详解</a></p>
+</blockquote>
+<p> scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令， scp传输是加密的,可能会稍微影响一下速度。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p>
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><pre><code class="hljs inform7">usage: scp <span class="hljs-comment">[-1246BCpqrv]</span> <span class="hljs-comment">[-c cipher]</span> <span class="hljs-comment">[-F ssh_config]</span> <span class="hljs-comment">[-i identity_file]</span>
+           <span class="hljs-comment">[-l limit]</span> <span class="hljs-comment">[-o ssh_option]</span> <span class="hljs-comment">[-P port]</span> <span class="hljs-comment">[-S program]</span>
+           <span class="hljs-comment">[<span class="hljs-comment">[user@]</span>host1:]</span>file1 ... <span class="hljs-comment">[<span class="hljs-comment">[user@]</span>host2:]</span>file2
+ 
+-q:  quiet
+-r:   recuersive
+-p:   properity
+-v:   verbose
+-i:   identity_file      【从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh】 
+-P:  port</code></pre>
+
+<h2 id="常见命令展示"><a href="#常见命令展示" class="headerlink" title="常见命令展示"></a>常见命令展示</h2><p>scp命令的实际应用概述： </p>
+<p>从本地服务器复制到远程服务器：</p>
+<h3 id="一、复制文件"><a href="#一、复制文件" class="headerlink" title="一、复制文件"></a>一、复制文件</h3><pre><code class="hljs angelscript">命令格式：
+
+scp local_file <span class="hljs-symbol">remote_username@</span>remote_ip:remote_folder  
+
+或者
+
+scp local_file <span class="hljs-symbol">remote_username@</span>remote_ip:remote_file  
+
+或者
+
+scp local_file remote_ip:remote_folder  
+
+或者
+
+scp local_file remote_ip:remote_file  
+
+第<span class="hljs-number">1</span>,<span class="hljs-number">2</span>个指定了用户名，命令执行后需要输入用户密码，第<span class="hljs-number">1</span>个仅指定了远程的目录，文件名字不变，第<span class="hljs-number">2</span>个指定了文件名  
+
+第<span class="hljs-number">3</span>,<span class="hljs-number">4</span>个没有指定用户名，命令执行后需要输入用户名和密码，第<span class="hljs-number">3</span>个仅指定了远程的目录，文件名字不变，第<span class="hljs-number">4</span>个指定了文件名</code></pre>
+
+
+<h3 id="二、命令格式"><a href="#二、命令格式" class="headerlink" title="二、命令格式"></a>二、命令格式</h3><pre><code class="hljs angelscript">scp -r local_folder <span class="hljs-symbol">remote_username@</span>remote_ip:remote_folder  
+
+或者
+
+scp -r local_folder remote_ip:remote_folder  
+
+第<span class="hljs-number">1</span>个指定了用户名，命令执行后需要输入用户密码；  
+
+第<span class="hljs-number">2</span>个没有指定用户名，命令执行后需要输入用户名和密码</code></pre>]]></content>
+      <categories>
+        <category>系统工具</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell 脚本</title>
+    <url>/2020/05/16/Linux-shell/</url>
+    <content><![CDATA[<p>Shell 脚本（Shell Script），是一种为 Shell 编写的脚本程序。sh是Linux中运行Shell的命令，是Shell的解释器，Shell脚本是Linux中壳层与命令行界面，用户可以抄在Shell脚本输入命令来执行各种各样的任务。<br>Shell Script与Windows/Dos下的批处理相似，也就是用各类命令预先放入到一个文件中，方便一次性执行的一个程序文件，主要是方便管理员进行设置或者管理用的。但是它比Windows下的批处理更强大，比用其他编程程序编辑的程序效率更高，它使用了Linux/Unix下的命令。</p>
+<h2 id="Shell-脚本编写"><a href="#Shell-脚本编写" class="headerlink" title="Shell 脚本编写"></a>Shell 脚本编写</h2><p>打开文本编辑器(可以使用vi/vim命令来创建文件)，新建一个文件test.sh，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好。<br>输入一些代码，第一行一般是这样：</p>
+<pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello World !"</span></code></pre>
+<p>“#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种Shell。<br>echo命令用于向窗口输出文本。</p>
+<h3 id="赋予执行权限"><a href="#赋予执行权限" class="headerlink" title="赋予执行权限"></a>赋予执行权限</h3><p>要运行Shell脚本，首选需要给Shell脚本权限，这里里以test.sh文件为例，首先需要按下“crtl+shift+T”打开终端窗口：</p>
+<pre><code class="hljs stata">chmod +x ./<span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span></code></pre>
+
+<h3 id="执行Shell脚本"><a href="#执行Shell脚本" class="headerlink" title="执行Shell脚本"></a>执行Shell脚本</h3><p>3、输入“sh test.sh”就开始执行shell脚本了，此时在终端中就输出了“hello!”的字样。以上就是用sh执行shell脚本的简单演度示，当然Shell是一个功能相当强大的编程语言，有着易编写，易调试，灵活性较强的特点。</p>
+<pre><code class="hljs stata"><span class="hljs-keyword">sh</span> <span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span></code></pre>
+
+<h3 id="Shell-脚本编写拓展"><a href="#Shell-脚本编写拓展" class="headerlink" title="Shell 脚本编写拓展"></a>Shell 脚本编写拓展</h3><p>Shell 等待上一条命令执行完再执行下一条 以及 cat EOF 写法<br>第一个shell写文件，要执行的时间很长，第二个shell依赖前面生成的文件，那么，第二个shell就要等到文件写完再执行才有效，那么就有两种方式实现：</p>
+<pre><code class="hljs mipsasm"><span class="hljs-keyword">shell1 </span>&amp;&amp; <span class="hljs-keyword">shell2 </span>&amp;&amp; <span class="hljs-keyword">shell3</span></code></pre>
+
+
+<p>注意，如果报语法错误，可以将各个语句前后加上 [b]反短斜线[/b]，即：</p>
+<pre><code class="hljs gauss">cat &lt;&lt; <span class="hljs-built_in">EOF</span> &gt; test.txt
+context
+<span class="hljs-built_in">EOF</span></code></pre>
+
+
+
+
+<p><code>wget https://getcomposer.org/installer || ( echo &quot;failed&quot;; exit ) &amp;&amp; php composer-setup.php &amp;&amp; rm -r composer-setup.php &amp;&amp; echo &quot;install oj8k&quot;</code><br>这里是其他的shell命令</p>
+<p>解释:<br>‘&amp;&amp;’: 顺序执行执行作用  如a &amp;&amp; b, a成功后才会执行b, 否则b不会执行<br>‘||’: 如a||b a执行失败才会执行b,a 成功了就不会执行b了<br>‘;’  : 两条shell要使用逗号隔开<br>():  为了将多条命令当作一个整体看, 如例子中 ( echo “failed”; exit ) 如果wget执行失败会执行echo 和 exit退出脚本这两个动作, 一定要加上(), 不然exit会被当成独立的语句,所以无论怎么都会被执行到, 这就违背了我们的意图了</p>
+]]></content>
+      <categories>
+        <category>待完善</category>
+      </categories>
+      <tags>
+        <tag>Linux-系统工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浏览器调试：Chrome连接手机调试</title>
+    <url>/2020/05/01/debug-chrome/</url>
+    <content><![CDATA[<p>Chrome调试安卓手机上的移动端页面</p>
+<h2 id="一、手机开发者选项"><a href="#一、手机开发者选项" class="headerlink" title="一、手机开发者选项"></a>一、手机开发者选项</h2><p>首先你得打开手机的开发者选项，确保USB调试和通过USB验证应用程序保持打开状态，如图所示<br><img src="/imgs/003.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="二、浏览器链接远程设备（手机）"><a href="#二、浏览器链接远程设备（手机）" class="headerlink" title="二、浏览器链接远程设备（手机）"></a>二、浏览器链接远程设备（手机）</h2><p>打开谷歌浏览器，调出控制台，点击如图所示这个3旁边的3个点，这里面有更多的功能，点击More tools<br><img src="/imgs/004.jpg" srcset="/img/loading.gif" alt="1"><br>在之后的页面中discover USB devices选项打钩，用你数据链连接你的电脑和手机，确认后,左侧devices会显示连接设备,代表链接成功。<br><img src="/imgs/007.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="三、打开调试控制台"><a href="#三、打开调试控制台" class="headerlink" title="三、打开调试控制台"></a>三、打开调试控制台</h2><p>在电脑上的谷歌浏览器输入这个网址chrome://inspect/<br><img src="/imgs/008.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="四、调试"><a href="#四、调试" class="headerlink" title="四、调试"></a>四、调试</h2><p>手机端打开界面（部分app应用不支持，可用谷歌浏览器打开界面），输入你想要调试的网页，我一般都是把网页放到我的本地服务器，在手机浏览器上输入我的本地网址。假设当前我们打开的是一个百度页面，控制台会显示对应的页面，点击inspect就可以审查手机页面了。<br><img src="/imgs/009.jpg" srcset="/img/loading.gif" alt="1"><br>审查方式就跟平常直接在PC上调试网页一样<br><img src="/imgs/010.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="五、无法调试，处理方案"><a href="#五、无法调试，处理方案" class="headerlink" title="五、无法调试，处理方案"></a>五、无法调试，处理方案</h2><p>访问 <code>chrome://inspect/#devices</code>出现空白页或出现404,用以下方式排查可基本解决问题<br>1.能够访问google.com<br>2.手机开启usb调试模式<br>3.允许电脑访问手机<br>4.清除一下这里的缓存 chrome://appcache-internals/#</p>
+<h2 id="话外：Chrome调试IOS手机上的移动端页面"><a href="#话外：Chrome调试IOS手机上的移动端页面" class="headerlink" title="话外：Chrome调试IOS手机上的移动端页面"></a>话外：Chrome调试IOS手机上的移动端页面</h2><p>参考官方文档：<a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started" target="_blank" rel="noopener">https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started</a></p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>手机调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模拟器调试：Genymotion安卓模拟器</title>
+    <url>/2020/05/01/debug-genymotion/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://www.jianshu.com/p/289534984fd9" target="_blank" rel="noopener">文档mac安装Genymotion模拟器教程</a><br><a href="https://www.cnblogs.com/JoannaQ/p/3987408.html" target="_blank" rel="noopener">Remote Debugging Chrome 结合Genymotion模拟器的移动端web真机调试</a></p>
+</blockquote>
+<p> Genymotion是一套完整的工具，支持Windows、Linux和MacOS等操作系统，它提供了Android虚拟环境。它简直就是开发者、测试人员、推销者甚至是游戏玩家的福音。</p>
+<p>打开Genymotion，下载指定的安卓版本模拟器</p>
+<p><img src="/imgs/001.png" srcset="/img/loading.gif" alt="1"></p>
+<p>点击对应的devices设备打开模拟器进行调试</p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>手机调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浏览器调试：Safari连接手机调试</title>
+    <url>/2020/05/01/debug-safari/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://blog.csdn.net/guoyuyanmen/article/details/52485439" target="_blank" rel="noopener">如何使用电脑上的Safari浏览器来调试ios手机上的移动端页面</a></p>
+</blockquote>
+<h2 id="Safari调试iPhone-app-web页面"><a href="#Safari调试iPhone-app-web页面" class="headerlink" title="Safari调试iPhone app web页面"></a>Safari调试iPhone app web页面</h2><h3 id="Safari设置"><a href="#Safari设置" class="headerlink" title="Safari设置"></a>Safari设置</h3><p>打开Safari偏好者设置，选中“高级菜单”，在页面最下方看到“在菜单中显示开发菜单”的复选框，在复选框内打钩，这样设置完毕就能在Safari菜单中看到开发菜单了<br><img src="/imgs/011.png" srcset="/img/loading.gif" alt="1"></p>
+<h3 id="iPhone设置"><a href="#iPhone设置" class="headerlink" title="iPhone设置"></a>iPhone设置</h3><p>打开iPhone手机设置app 选择Safari，找到高级选项，有JavaScript开关web检查器开关，将两个开关都打开<br><img src="/imgs/012.png" srcset="/img/loading.gif" alt="1"></p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>到此，准备工作完成。这时候将iPhone链接到mac上，打开Safari浏览器，运行手机app里面的web页面，在开发菜单中选择连接的手机，找到调试的网页，就能在Safari里面调试了<br><img src="/imgs/013.png" srcset="/img/loading.gif" alt="1"></p>
+<h3 id="Safari控制台"><a href="#Safari控制台" class="headerlink" title="Safari控制台"></a>Safari控制台</h3><p>在Safari打开开发者模式<br>1.在Safari中鼠标右键，选择检查元素，就可以看见Safari控制台了。<br>2.如果没有检查元素选项，在Safari设置打开开发选项</p>
+<h2 id="未显示可调试的设备，对应处理方式"><a href="#未显示可调试的设备，对应处理方式" class="headerlink" title="未显示可调试的设备，对应处理方式"></a>未显示可调试的设备，对应处理方式</h2><p>版本不兼容问题，没有对应的系统设备的模拟器，需要先在xcode添加，参考以下文档<br>模拟器：mac xcode simulator模拟ios调试<br><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>手机调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模拟器：Xcode IOS模拟器</title>
+    <url>/2020/05/01/debug-xcode-simulator/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="http://www.cocoachina.com/articles/219866" target="_blank" rel="noopener">Xcode 9 —进阶的 iOS Simulator</a><br><a href="https://www.jianshu.com/p/667f434f1c9c" target="_blank" rel="noopener">Xcode9之更好用的iOS Simulator(模拟器)</a><br><a href="https://www.jianshu.com/p/bb1ba50700bc" target="_blank" rel="noopener">Xcode修改模拟器Simulator版本</a><br><a href="https://www.jianshu.com/p/8b7f421c8286" target="_blank" rel="noopener">Xcode中Simulator找不到</a></p>
+</blockquote>
+<p>Apple每一次大的版本更新，都会伴随着编译器的大升级，在Xcode9版本后加入了iOS Simulator(模拟器)。</p>
+<h2 id="第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载"><a href="#第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载" class="headerlink" title="第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载"></a>第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载</h2><p><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟"><a href="#第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟" class="headerlink" title="第二步:打开simulator → hardware → device → 选择ios版本进行模拟"></a>第二步:打开simulator → hardware → device → 选择ios版本进行模拟</h2><p><img src="/imgs/015.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="第三步-打开safari-→-开发-→选择对应的模拟器进行调试"><a href="#第三步-打开safari-→-开发-→选择对应的模拟器进行调试" class="headerlink" title="第三步:打开safari → 开发 →选择对应的模拟器进行调试"></a>第三步:打开safari → 开发 →选择对应的模拟器进行调试</h2><p><img src="/imgs/016.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="最后-可以愉快的开始调试了"><a href="#最后-可以愉快的开始调试了" class="headerlink" title="最后:可以愉快的开始调试了"></a>最后:可以愉快的开始调试了</h2><p><img src="/imgs/017.png" srcset="/img/loading.gif" alt="1"></p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>手机调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端调试工具汇总</title>
+    <url>/2020/05/01/debug/</url>
+    <content><![CDATA[<!-- index_img: /debug/default.png -->
+
+<blockquote>
+<p>前端调试模式：模拟器调试，浏览器调试，系统内置调试器，代理调试</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h3 id="模拟器调试"><a href="#模拟器调试" class="headerlink" title="模拟器调试"></a>模拟器调试</h3><p>使用场景：没有现成手机进行还原时，可以跟用户要下系统版本，通过模拟器模拟对应系统进行调试  </p>
+<p>工具：<a href="/2020/05/01/debug-genymotion/">Genymotion安卓模拟器</a>；<a href="/2020/05/01/debug-xcode-simulator/">Xcode IOS模拟器</a></p>
+<h3 id="浏览器调试"><a href="#浏览器调试" class="headerlink" title="浏览器调试"></a>浏览器调试</h3><p>使用场景：有现成手机可以还原问题进行调试时，可以直接链接到PC浏览器调试器进行调试</p>
+<p>工具: <a href="/2020/05/01/debug-chrome/">Chrome连接手机调试</a>；<a href="/2020/05/01/debug-safari/">Safari链接ios手机调试</a></p>
+<h3 id="系统内置调试器"><a href="#系统内置调试器" class="headerlink" title="系统内置调试器"></a>系统内置调试器</h3><p>使用场景：其他手机模拟器无法还原问题，只在客户手机出现该问题，可以用系统内置调试器进行调试</p>
+<p>工具: 系统内嵌vConsole工具</p>
+<h3 id="代理调试"><a href="#代理调试" class="headerlink" title="代理调试"></a>代理调试</h3><p>使用场景：网络封包截取</p>
+<p>工具: 代理工具 Charles</p>
+<p>​         </p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>手机调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git常用命令</title>
+    <url>/2020/05/15/git-cli/</url>
+    <content><![CDATA[<h1 id="Git常用操作"><a href="#Git常用操作" class="headerlink" title="Git常用操作"></a>Git常用操作</h1><blockquote>
+<p>相关文章：<br><a href="http://blog.csdn.net/u013374164/article/details/78422968" target="_blank" rel="noopener">Git使用手册：生成SSH Key</a><br><a href="http://blog.csdn.net/u013374164/article/details/78423342" target="_blank" rel="noopener">Git使用手册：使用SSH Key及配置SSH key公钥</a><br><a href="http://blog.csdn.net/u013374164/article/details/78644576" target="_blank" rel="noopener">Git使用手册：工作区、暂存区、本地仓库、远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git clone 克隆下载远程仓库项目工程到本地工作区</a><br><a href="https://blog.csdn.net/ahxieqi/article/details/93628438" target="_blank" rel="noopener">Git使用手册：git clone 速度很慢的解决方法</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git branch 分支操作、创建分支、查看分支、删除分支、删除本地分支、删除远程分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78830866" target="_blank" rel="noopener">Git使用手册：git checkout 创建分支、切换分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831273" target="_blank" rel="noopener">Git使用手册：git status 查看本地工作区、暂存区中文件的修改状态</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831438" target="_blank" rel="noopener">Git使用手册：git diff 、 git add 、 git diff –cached 命令详解</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831480" target="_blank" rel="noopener">Git使用手册：git commit -m/-am/-a -m 提交文件至本地仓库区</a><br><a href="http://blog.csdn.net/u013374164/article/details/78832825" target="_blank" rel="noopener">Git使用手册：git fetch 将远程仓库的分支及分支最新版本代码拉取到本地</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833173" target="_blank" rel="noopener">Git使用手册：git pull origin 拉取代码到本地，解决拉取代码时发生的文件冲突</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833317" target="_blank" rel="noopener">Git使用手册：git push 推送提交本地仓库代码文件到远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/79091677" target="_blank" rel="noopener">Git使用手册/Git教程：git log 查看git提交日志记录</a></p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><pre><code>- windows下载git-scm
+- Linux使用sudo apt-get install git或者yum install git</code></pre><h4 id="克隆代码"><a href="#克隆代码" class="headerlink" title="克隆代码"></a>克隆代码</h4><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">URL</span></code></pre>
+<p>克隆代码两种方式</p>
+<ul>
+<li><p>HTTPS，每次都需要输入账号和密码</p>
+</li>
+<li><p>SSH，需要添加公钥（推荐方式）<br>生成密钥 <code>ssh-keygen -t rsa</code>，<br>将公钥( ~/.ssh/id_rsa.pub)粘贴到Gitlab &gt;&gt; User Settings &gt;&gt; SSH Keys</p>
+</li>
+</ul>
+<pre><code class="hljs crmsh">tips: 快速下载网上开源项目，使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>
+* depth用于指定克隆深度，<span class="hljs-attr">depth=</span><span class="hljs-number">1</span>表示只克隆最近一次commit 
+* 使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>不会下载 Git 协作的历史记录，这样可以大大加快克隆的速度</code></pre>
+
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>一般工作流程如下：</p>
+<pre><code class="hljs properties"><span class="hljs-attr">git</span> <span class="hljs-string">pull origin master</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">checkout -b dev // 或者git pull origin master:dev</span>
+<span class="hljs-attr">vim</span> <span class="hljs-string">test.py //修改代码</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">status</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">add test.py</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">status</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">commit -m "fix issue #1"</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">push origin dev</span>
+<span class="hljs-meta">在gitlab上点击提交request</span> <span class="hljs-string">merge, 发给组员review后再merge</span></code></pre>
+
+<p>状态：<br><a href="./images/areas.png">工作区,暂存区,仓库</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000" target="_blank" rel="noopener">参考廖雪峰教程</a></p>
+<h4 id="拉取和合并"><a href="#拉取和合并" class="headerlink" title="拉取和合并"></a>拉取和合并</h4><p>git fetch和git pull区别：</p>
+<p>git fetch是从远程获取最新到本地，不会自动merge.而git pull则从远程获取最新版本并且merge到本地</p>
+<pre><code class="hljs cos">git fetch origin master:tmp <span class="hljs-comment">//从远程仓库master分支获取最新到本地tmp分支</span>
+
+git diff tmp <span class="hljs-comment">//将当前分支和tmp进行对比</span>
+
+git <span class="hljs-keyword">merge</span> tmp <span class="hljs-comment">//合并master分支到当前分支</span>
+
+<span class="hljs-comment">//以上相当于一条命令： </span>
+git pull origin master</code></pre>
+<p>*使用git fetch更安全，可以选择是否合并</p>
+<h3 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h3><h4 id="遇到代码冲突"><a href="#遇到代码冲突" class="headerlink" title="遇到代码冲突"></a>遇到代码冲突</h4><p>场景：使用git merge或者git pull遇到冲突，无法自动合并。如下：</p>
+<pre><code class="hljs pgsql">Auto-merging readme.txt
+<span class="hljs-keyword">CONFLICT</span> (content): Merge <span class="hljs-keyword">conflict</span> <span class="hljs-keyword">in</span> readme.txt
+Automatic merge failed; fix conflicts <span class="hljs-keyword">and</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">commit</span> the result.</code></pre>
+<p>参考文档：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">解决冲突</a></p>
+<h4 id="突然接到需求"><a href="#突然接到需求" class="headerlink" title="突然接到需求"></a>突然接到需求</h4><p>场景：你在写某个功能，但还没完成不想提交。突然接到需求，需要切到某个分支fix某个bug.</p>
+<pre><code class="hljs cpp">git stash <span class="hljs-comment">// 保存当前修改进度</span>
+
+git stash <span class="hljs-built_in">list</span> <span class="hljs-comment">// 查看所有进度列表</span>
+
+git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
+
+
+
+]]></content>
+      <categories>
+        <category>待完善</category>
+      </categories>
+      <tags>
+        <tag>Git-开发协作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git提交规范</title>
+    <url>/2020/05/15/git-commit-reg/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档：<a href="https://zhuanlan.zhihu.com/p/88870009" target="_blank" rel="noopener">关于 Git 提交这些规范，你都遵守了吗？</a></p>
+</blockquote>
+<p>Git是现在市面上最流行的版本控制工具，书写良好的commit message能大大提高代码维护的效率。但是在日常开发中由于缺少对commit message的约束，导致填写内容随意、质量参差不齐，可读性低亦难以维护。</p>
+<h2 id="约定式提交规范"><a href="#约定式提交规范" class="headerlink" title="约定式提交规范"></a>约定式提交规范</h2><p>现在市面上比较流行的方案是约定式提交规范（Conventional Commits），它受到了Angular提交准则的启发，并在很大程度上以其为依据。约定式提交规范是一种基于提交消息的轻量级约定。</p>
+<p>它提供了一组用于创建清晰的提交历史的简单规则；这使得编写基于规范的自动化工具变得更容易。这个约定与SemVer相吻合，在提交信息中描述新特性、bug 修复和破坏性变更。</p>
+<h2 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h2><p>提交标准格式如下：</p>
+<pre><code class="hljs dts"><span class="hljs-params">&lt;type&gt;</span>(<span class="hljs-params">&lt;scope&gt;</span>): <span class="hljs-params">&lt;subject&gt;</span> <span class="hljs-meta">#header</span>
+<span class="hljs-comment">// 空一行</span>
+<span class="hljs-params">&lt;body&gt;</span>
+<span class="hljs-comment">// 空一行</span>
+<span class="hljs-params">&lt;footer&gt;</span></code></pre>
+<p>翻译成中文：</p>
+<pre><code class="hljs cs">&lt;类型&gt;[可选的作用域]: &lt;描述&gt;
+<span class="hljs-comment">// 空一行</span>
+[<span class="hljs-meta">可选的正文</span>]
+<span class="hljs-comment">// 空一行</span>
+[<span class="hljs-meta">可选的脚注</span>]</code></pre>
+
+<h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p>
+<p>feat：新功能（feature）<br>fix：修补bug<br>docs：文档（documentation）<br>style： 格式（不影响代码运行的变动）<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>test：增加测试<br>chore：构建过程或辅助工具的变动</p>
+<p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
+<h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p>
+<pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能
+
+支持部门的迁移，复制，删除
+
+Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
+      <categories>
+        <category>开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iTerm2 Profiles快捷登录ssh</title>
+    <url>/2020/05/16/iTerm/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://blog.csdn.net/Soinice/article/details/97559183" target="_blank" rel="noopener">macOS Mojave（配置篇）：使用iTerm2 Profiles快捷登录ssh（自动连接远程服务器）</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>待完善</category>
+      </categories>
+      <tags>
+        <tag>iTerm2-系统工具</tag>
+      </tags>
+  </entry>
+</search>

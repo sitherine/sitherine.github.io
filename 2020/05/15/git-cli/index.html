@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="sitherine">
+  <meta name="keywords" content="">
+  <title>Git常用命令 - Sihterine&#39;S BLOG</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<!-- sitherine iconfont -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1815270_88ashvcrfm.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Sitherine</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-15 19:38">
+                    2020年5月15日 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    795 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    9
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Git常用操作"><a href="#Git常用操作" class="headerlink" title="Git常用操作"></a>Git常用操作</h1><blockquote>
+<p>相关文章：<br><a href="http://blog.csdn.net/u013374164/article/details/78422968" target="_blank" rel="noopener">Git使用手册：生成SSH Key</a><br><a href="http://blog.csdn.net/u013374164/article/details/78423342" target="_blank" rel="noopener">Git使用手册：使用SSH Key及配置SSH key公钥</a><br><a href="http://blog.csdn.net/u013374164/article/details/78644576" target="_blank" rel="noopener">Git使用手册：工作区、暂存区、本地仓库、远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git clone 克隆下载远程仓库项目工程到本地工作区</a><br><a href="https://blog.csdn.net/ahxieqi/article/details/93628438" target="_blank" rel="noopener">Git使用手册：git clone 速度很慢的解决方法</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git branch 分支操作、创建分支、查看分支、删除分支、删除本地分支、删除远程分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78830866" target="_blank" rel="noopener">Git使用手册：git checkout 创建分支、切换分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831273" target="_blank" rel="noopener">Git使用手册：git status 查看本地工作区、暂存区中文件的修改状态</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831438" target="_blank" rel="noopener">Git使用手册：git diff 、 git add 、 git diff –cached 命令详解</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831480" target="_blank" rel="noopener">Git使用手册：git commit -m/-am/-a -m 提交文件至本地仓库区</a><br><a href="http://blog.csdn.net/u013374164/article/details/78832825" target="_blank" rel="noopener">Git使用手册：git fetch 将远程仓库的分支及分支最新版本代码拉取到本地</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833173" target="_blank" rel="noopener">Git使用手册：git pull origin 拉取代码到本地，解决拉取代码时发生的文件冲突</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833317" target="_blank" rel="noopener">Git使用手册：git push 推送提交本地仓库代码文件到远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/79091677" target="_blank" rel="noopener">Git使用手册/Git教程：git log 查看git提交日志记录</a></p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><pre><code>- windows下载git-scm
+- Linux使用sudo apt-get install git或者yum install git</code></pre><h4 id="克隆代码"><a href="#克隆代码" class="headerlink" title="克隆代码"></a>克隆代码</h4><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">URL</span></code></pre>
+<p>克隆代码两种方式</p>
+<ul>
+<li><p>HTTPS，每次都需要输入账号和密码</p>
+</li>
+<li><p>SSH，需要添加公钥（推荐方式）<br>生成密钥 <code>ssh-keygen -t rsa</code>，<br>将公钥( ~/.ssh/id_rsa.pub)粘贴到Gitlab &gt;&gt; User Settings &gt;&gt; SSH Keys</p>
+</li>
+</ul>
+<pre><code class="hljs crmsh">tips: 快速下载网上开源项目，使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>
+* depth用于指定克隆深度，<span class="hljs-attr">depth=</span><span class="hljs-number">1</span>表示只克隆最近一次commit 
+* 使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>不会下载 Git 协作的历史记录，这样可以大大加快克隆的速度</code></pre>
+
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>一般工作流程如下：</p>
+<pre><code class="hljs properties"><span class="hljs-attr">git</span> <span class="hljs-string">pull origin master</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">checkout -b dev // 或者git pull origin master:dev</span>
+<span class="hljs-attr">vim</span> <span class="hljs-string">test.py //修改代码</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">status</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">add test.py</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">status</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">commit -m "fix issue #1"</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">push origin dev</span>
+<span class="hljs-meta">在gitlab上点击提交request</span> <span class="hljs-string">merge, 发给组员review后再merge</span></code></pre>
+
+<p>状态：<br><a href="./images/areas.png">工作区,暂存区,仓库</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000" target="_blank" rel="noopener">参考廖雪峰教程</a></p>
+<h4 id="拉取和合并"><a href="#拉取和合并" class="headerlink" title="拉取和合并"></a>拉取和合并</h4><p>git fetch和git pull区别：</p>
+<p>git fetch是从远程获取最新到本地，不会自动merge.而git pull则从远程获取最新版本并且merge到本地</p>
+<pre><code class="hljs cos">git fetch origin master:tmp <span class="hljs-comment">//从远程仓库master分支获取最新到本地tmp分支</span>
+
+git diff tmp <span class="hljs-comment">//将当前分支和tmp进行对比</span>
+
+git <span class="hljs-keyword">merge</span> tmp <span class="hljs-comment">//合并master分支到当前分支</span>
+
+<span class="hljs-comment">//以上相当于一条命令： </span>
+git pull origin master</code></pre>
+<p>*使用git fetch更安全，可以选择是否合并</p>
+<h3 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h3><h4 id="遇到代码冲突"><a href="#遇到代码冲突" class="headerlink" title="遇到代码冲突"></a>遇到代码冲突</h4><p>场景：使用git merge或者git pull遇到冲突，无法自动合并。如下：</p>
+<pre><code class="hljs pgsql">Auto-merging readme.txt
+<span class="hljs-keyword">CONFLICT</span> (content): Merge <span class="hljs-keyword">conflict</span> <span class="hljs-keyword">in</span> readme.txt
+Automatic merge failed; fix conflicts <span class="hljs-keyword">and</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">commit</span> the result.</code></pre>
+<p>参考文档：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">解决冲突</a></p>
+<h4 id="突然接到需求"><a href="#突然接到需求" class="headerlink" title="突然接到需求"></a>突然接到需求</h4><p>场景：你在写某个功能，但还没完成不想提交。突然接到需求，需要切到某个分支fix某个bug.</p>
+<pre><code class="hljs cpp">git stash <span class="hljs-comment">// 保存当前修改进度</span>
+
+git stash <span class="hljs-built_in">list</span> <span class="hljs-comment">// 查看所有进度列表</span>
+
+git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
+
+
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%BE%85%E5%AE%8C%E5%96%84/">待完善</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git-%E5%BC%80%E5%8F%91%E5%8D%8F%E4%BD%9C/">Git-开发协作</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/16/Linux-scp/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux scp命令详解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/15/git-commit-reg/">
+                        <span class="hidden-mobile">Git提交规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+       rel="nofollow noopener">粤ICP备20032374号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Git常用命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
