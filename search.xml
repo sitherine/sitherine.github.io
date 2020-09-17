@@ -143,20 +143,6 @@ context
       </tags>
   </entry>
   <entry>
-    <title>前端缓存</title>
-    <url>/2020/09/15/cache-front/</url>
-    <content><![CDATA[<blockquote>
-<p>文章参考<br><a href="https://learnku.com/articles/43143" target="_blank" rel="noopener">[故事] 浏览器缓存原理你真的懂吗？一篇漫画故事带你理解透顶！</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>前端调试</category>
-      </categories>
-      <tags>
-        <tag>缓存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浏览器调试：Chrome连接手机调试</title>
     <url>/2020/05/01/debug-chrome/</url>
     <content><![CDATA[<p>Chrome调试安卓手机上的移动端页面</p>
@@ -190,6 +176,20 @@ context
       </categories>
       <tags>
         <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端缓存</title>
+    <url>/2020/09/15/cache-front/</url>
+    <content><![CDATA[<blockquote>
+<p>文章参考<br><a href="https://learnku.com/articles/43143" target="_blank" rel="noopener">[故事] 浏览器缓存原理你真的懂吗？一篇漫画故事带你理解透顶！</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>缓存</tag>
       </tags>
   </entry>
   <entry>
@@ -231,6 +231,58 @@ context
       </tags>
   </entry>
   <entry>
+    <title>Git实现代码自动部署</title>
+    <url>/2020/05/18/git-auto-deploy/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文章<br><a href="https://www.jianshu.com/p/8b774fdfd29a" target="_blank" rel="noopener">使用git实现代码自动部署</a><br><a href="https://www.cnblogs.com/peteremperor/p/7754195.html" target="_blank" rel="noopener">使用Git的hook实现代码的自动部署</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git提交规范</title>
+    <url>/2020/05/15/git-commit-reg/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档：<a href="https://zhuanlan.zhihu.com/p/88870009" target="_blank" rel="noopener">关于 Git 提交这些规范，你都遵守了吗？</a></p>
+</blockquote>
+<p>Git是现在市面上最流行的版本控制工具，书写良好的commit message能大大提高代码维护的效率。但是在日常开发中由于缺少对commit message的约束，导致填写内容随意、质量参差不齐，可读性低亦难以维护。</p>
+<h2 id="约定式提交规范"><a href="#约定式提交规范" class="headerlink" title="约定式提交规范"></a>约定式提交规范</h2><p>现在市面上比较流行的方案是约定式提交规范（Conventional Commits），它受到了Angular提交准则的启发，并在很大程度上以其为依据。约定式提交规范是一种基于提交消息的轻量级约定。</p>
+<p>它提供了一组用于创建清晰的提交历史的简单规则；这使得编写基于规范的自动化工具变得更容易。这个约定与SemVer相吻合，在提交信息中描述新特性、bug 修复和破坏性变更。</p>
+<h2 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h2><p>提交标准格式如下：</p>
+<pre><code class="hljs dts"><span class="hljs-params">&lt;type&gt;</span>(<span class="hljs-params">&lt;scope&gt;</span>): <span class="hljs-params">&lt;subject&gt;</span> <span class="hljs-meta">#header</span>
+<span class="hljs-comment">// 空一行</span>
+<span class="hljs-params">&lt;body&gt;</span>
+<span class="hljs-comment">// 空一行</span>
+<span class="hljs-params">&lt;footer&gt;</span></code></pre>
+<p>翻译成中文：</p>
+<pre><code class="hljs cs">&lt;类型&gt;[可选的作用域]: &lt;描述&gt;
+<span class="hljs-comment">// 空一行</span>
+[<span class="hljs-meta">可选的正文</span>]
+<span class="hljs-comment">// 空一行</span>
+[<span class="hljs-meta">可选的脚注</span>]</code></pre>
+
+<h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p>
+<p>feat：新功能（feature）<br>fix：修补bug<br>docs：文档（documentation）<br>style： 格式（不影响代码运行的变动）<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>test：增加测试<br>chore：构建过程或辅助工具的变动</p>
+<p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
+<h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p>
+<pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能
+
+支持部门的迁移，复制，删除
+
+Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端调试工具汇总</title>
     <url>/2020/05/01/debug/</url>
     <content><![CDATA[<!-- index_img: /debug/default.png -->
@@ -257,6 +309,18 @@ context
       </categories>
       <tags>
         <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx配置详解</title>
+    <url>/2020/05/16/nginx/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/bluestorm/p/4574688.html" target="_blank" rel="noopener">https://www.cnblogs.com/bluestorm/p/4574688.html</a></p>
+]]></content>
+      <categories>
+        <category>环境部署</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -325,20 +389,6 @@ git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Git实现代码自动部署</title>
-    <url>/2020/05/18/git-auto-deploy/</url>
-    <content><![CDATA[<blockquote>
-<p>参考文章<br><a href="https://www.jianshu.com/p/8b774fdfd29a" target="_blank" rel="noopener">使用git实现代码自动部署</a><br><a href="https://www.cnblogs.com/peteremperor/p/7754195.html" target="_blank" rel="noopener">使用Git的hook实现代码的自动部署</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Git开发协作</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git-init初始化</title>
     <url>/2020/09/15/git-init/</url>
     <content><![CDATA[<p>创建新的仓库并绑定<br>…or create a new repository on the command line</p>
@@ -360,44 +410,6 @@ git push -u origin <span class="hljs-literal">master</span></code></pre>
 
 <p>查看当前仓库信息</p>
 <pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre>]]></content>
-      <categories>
-        <category>Git开发协作</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git提交规范</title>
-    <url>/2020/05/15/git-commit-reg/</url>
-    <content><![CDATA[<blockquote>
-<p>参考文档：<a href="https://zhuanlan.zhihu.com/p/88870009" target="_blank" rel="noopener">关于 Git 提交这些规范，你都遵守了吗？</a></p>
-</blockquote>
-<p>Git是现在市面上最流行的版本控制工具，书写良好的commit message能大大提高代码维护的效率。但是在日常开发中由于缺少对commit message的约束，导致填写内容随意、质量参差不齐，可读性低亦难以维护。</p>
-<h2 id="约定式提交规范"><a href="#约定式提交规范" class="headerlink" title="约定式提交规范"></a>约定式提交规范</h2><p>现在市面上比较流行的方案是约定式提交规范（Conventional Commits），它受到了Angular提交准则的启发，并在很大程度上以其为依据。约定式提交规范是一种基于提交消息的轻量级约定。</p>
-<p>它提供了一组用于创建清晰的提交历史的简单规则；这使得编写基于规范的自动化工具变得更容易。这个约定与SemVer相吻合，在提交信息中描述新特性、bug 修复和破坏性变更。</p>
-<h2 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h2><p>提交标准格式如下：</p>
-<pre><code class="hljs dts"><span class="hljs-params">&lt;type&gt;</span>(<span class="hljs-params">&lt;scope&gt;</span>): <span class="hljs-params">&lt;subject&gt;</span> <span class="hljs-meta">#header</span>
-<span class="hljs-comment">// 空一行</span>
-<span class="hljs-params">&lt;body&gt;</span>
-<span class="hljs-comment">// 空一行</span>
-<span class="hljs-params">&lt;footer&gt;</span></code></pre>
-<p>翻译成中文：</p>
-<pre><code class="hljs cs">&lt;类型&gt;[可选的作用域]: &lt;描述&gt;
-<span class="hljs-comment">// 空一行</span>
-[<span class="hljs-meta">可选的正文</span>]
-<span class="hljs-comment">// 空一行</span>
-[<span class="hljs-meta">可选的脚注</span>]</code></pre>
-
-<h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p>
-<p>feat：新功能（feature）<br>fix：修补bug<br>docs：文档（documentation）<br>style： 格式（不影响代码运行的变动）<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>test：增加测试<br>chore：构建过程或辅助工具的变动</p>
-<p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
-<h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p>
-<pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能
-
-支持部门的迁移，复制，删除
-
-Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
       <categories>
         <category>Git开发协作</category>
       </categories>
@@ -447,18 +459,6 @@ IdentityFile ~/.ssh/oschina_id_rsa</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Nginx配置详解</title>
-    <url>/2020/05/16/nginx/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/bluestorm/p/4574688.html" target="_blank" rel="noopener">https://www.cnblogs.com/bluestorm/p/4574688.html</a></p>
-]]></content>
-      <categories>
-        <category>环境部署</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iTerm2 Profiles快捷登录ssh</title>
     <url>/2020/05/16/iTerm/</url>
     <content><![CDATA[<blockquote>
@@ -470,6 +470,20 @@ IdentityFile ~/.ssh/oschina_id_rsa</code></pre>
       </categories>
       <tags>
         <tag>终端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh远程——常见错误处理</title>
+    <url>/2020/09/17/ssh-connect/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://blog.csdn.net/Jdk_yxs/article/details/79001060" target="_blank" rel="noopener">ssh远程报错ssh_exchange_identification: read: Connection reset by peer</a><br><a href="https://blog.csdn.net/lilygg/article/details/86187028" target="_blank" rel="noopener">解决 ssh_exchange_identification: read: Connection reset by peer问题</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>ssh</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
       </tags>
   </entry>
 </search>

@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>ssh远程——常见错误处理</title>
+    <link href="/2020/09/17/ssh-connect/"/>
+    <url>/2020/09/17/ssh-connect/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://blog.csdn.net/Jdk_yxs/article/details/79001060" target="_blank" rel="noopener">ssh远程报错ssh_exchange_identification: read: Connection reset by peer</a><br><a href="https://blog.csdn.net/lilygg/article/details/86187028" target="_blank" rel="noopener">解决 ssh_exchange_identification: read: Connection reset by peer问题</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>ssh</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ssh</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前端缓存</title>
     <link href="/2020/09/15/cache-front/"/>
     <url>/2020/09/15/cache-front/</url>
@@ -229,11 +254,11 @@
   
   
   <entry>
-    <title>Git常用命令</title>
-    <link href="/2020/05/15/git-cli/"/>
-    <url>/2020/05/15/git-cli/</url>
+    <title>Git配置多个SSH KEY</title>
+    <link href="/2020/05/15/git-ssh-key/"/>
+    <url>/2020/05/15/git-ssh-key/</url>
     
-    <content type="html"><![CDATA[<h1 id="Git常用操作"><a href="#Git常用操作" class="headerlink" title="Git常用操作"></a>Git常用操作</h1><blockquote><p>相关文章：<br><a href="http://blog.csdn.net/u013374164/article/details/78422968" target="_blank" rel="noopener">Git使用手册：生成SSH Key</a><br><a href="http://blog.csdn.net/u013374164/article/details/78423342" target="_blank" rel="noopener">Git使用手册：使用SSH Key及配置SSH key公钥</a><br><a href="http://blog.csdn.net/u013374164/article/details/78644576" target="_blank" rel="noopener">Git使用手册：工作区、暂存区、本地仓库、远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git clone 克隆下载远程仓库项目工程到本地工作区</a><br><a href="https://blog.csdn.net/ahxieqi/article/details/93628438" target="_blank" rel="noopener">Git使用手册：git clone 速度很慢的解决方法</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git branch 分支操作、创建分支、查看分支、删除分支、删除本地分支、删除远程分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78830866" target="_blank" rel="noopener">Git使用手册：git checkout 创建分支、切换分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831273" target="_blank" rel="noopener">Git使用手册：git status 查看本地工作区、暂存区中文件的修改状态</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831438" target="_blank" rel="noopener">Git使用手册：git diff 、 git add 、 git diff –cached 命令详解</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831480" target="_blank" rel="noopener">Git使用手册：git commit -m/-am/-a -m 提交文件至本地仓库区</a><br><a href="http://blog.csdn.net/u013374164/article/details/78832825" target="_blank" rel="noopener">Git使用手册：git fetch 将远程仓库的分支及分支最新版本代码拉取到本地</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833173" target="_blank" rel="noopener">Git使用手册：git pull origin 拉取代码到本地，解决拉取代码时发生的文件冲突</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833317" target="_blank" rel="noopener">Git使用手册：git push 推送提交本地仓库代码文件到远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/79091677" target="_blank" rel="noopener">Git使用手册/Git教程：git log 查看git提交日志记录</a></p></blockquote><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><pre><code>- windows下载git-scm- Linux使用sudo apt-get install git或者yum install git</code></pre><h4 id="克隆代码"><a href="#克隆代码" class="headerlink" title="克隆代码"></a>克隆代码</h4><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">URL</span></code></pre><p>克隆代码两种方式</p><ul><li><p>HTTPS，每次都需要输入账号和密码</p></li><li><p>SSH，需要添加公钥（推荐方式）<br>生成密钥 <code>ssh-keygen -t rsa</code>，<br>将公钥( ~/.ssh/id_rsa.pub)粘贴到Gitlab &gt;&gt; User Settings &gt;&gt; SSH Keys</p></li></ul><pre><code class="hljs crmsh">tips: 快速下载网上开源项目，使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>* depth用于指定克隆深度，<span class="hljs-attr">depth=</span><span class="hljs-number">1</span>表示只克隆最近一次commit * 使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>不会下载 Git 协作的历史记录，这样可以大大加快克隆的速度</code></pre><h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>一般工作流程如下：</p><pre><code class="hljs properties"><span class="hljs-attr">git</span> <span class="hljs-string">pull origin master</span><span class="hljs-attr">git</span> <span class="hljs-string">checkout -b dev // 或者git pull origin master:dev</span><span class="hljs-attr">vim</span> <span class="hljs-string">test.py //修改代码</span><span class="hljs-attr">git</span> <span class="hljs-string">status</span><span class="hljs-attr">git</span> <span class="hljs-string">add test.py</span><span class="hljs-attr">git</span> <span class="hljs-string">status</span><span class="hljs-attr">git</span> <span class="hljs-string">commit -m "fix issue #1"</span><span class="hljs-attr">git</span> <span class="hljs-string">push origin dev</span><span class="hljs-meta">在gitlab上点击提交request</span> <span class="hljs-string">merge, 发给组员review后再merge</span></code></pre><p>状态：<br><a href="./images/areas.png">工作区,暂存区,仓库</a></p><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000" target="_blank" rel="noopener">参考廖雪峰教程</a></p><h4 id="拉取和合并"><a href="#拉取和合并" class="headerlink" title="拉取和合并"></a>拉取和合并</h4><p>git fetch和git pull区别：</p><p>git fetch是从远程获取最新到本地，不会自动merge.而git pull则从远程获取最新版本并且merge到本地</p><pre><code class="hljs cos">git fetch origin master:tmp <span class="hljs-comment">//从远程仓库master分支获取最新到本地tmp分支</span>git diff tmp <span class="hljs-comment">//将当前分支和tmp进行对比</span>git <span class="hljs-keyword">merge</span> tmp <span class="hljs-comment">//合并master分支到当前分支</span><span class="hljs-comment">//以上相当于一条命令： </span>git pull origin master</code></pre><p>*使用git fetch更安全，可以选择是否合并</p><h3 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h3><h4 id="遇到代码冲突"><a href="#遇到代码冲突" class="headerlink" title="遇到代码冲突"></a>遇到代码冲突</h4><p>场景：使用git merge或者git pull遇到冲突，无法自动合并。如下：</p><pre><code class="hljs pgsql">Auto-merging readme.txt<span class="hljs-keyword">CONFLICT</span> (content): Merge <span class="hljs-keyword">conflict</span> <span class="hljs-keyword">in</span> readme.txtAutomatic merge failed; fix conflicts <span class="hljs-keyword">and</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">commit</span> the result.</code></pre><p>参考文档：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">解决冲突</a></p><h4 id="突然接到需求"><a href="#突然接到需求" class="headerlink" title="突然接到需求"></a>突然接到需求</h4><p>场景：你在写某个功能，但还没完成不想提交。突然接到需求，需要切到某个分支fix某个bug.</p><pre><code class="hljs cpp">git stash <span class="hljs-comment">// 保存当前修改进度</span>git stash <span class="hljs-built_in">list</span> <span class="hljs-comment">// 查看所有进度列表</span>git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>]]></content>
+    <content type="html"><![CDATA[<p>###生成ssh key</p><pre><code class="hljs arcade">ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa -C <span class="hljs-string">"xx-email"</span>ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_gitlab -C <span class="hljs-string">"xx-email"</span></code></pre><p>上面的id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出 <code>id_rsa</code> 和id_rsa_gitlab.pub两个文件，id_rsa.pub里保存的就是我们要使用的key。</p><p>​ 上面的oschina2_id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出oschina2_id_rsa和oschina2_id_rsa.pub两个文件，oschina2_id_rsa.pub里保存的就是我们要使用的key。</p><p>查看你的 public key，并把他添加到码云（Gitee.com）,复制内容填入即可 SSH key添加地址</p><pre><code class="hljs awk">cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<span class="hljs-comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></code></pre><p>###配置config文件<br>配置<code>.ssh</code>文件下的config文件</p><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/.ssh/</span>cat config</code></pre><p>config文件内容</p><pre><code class="hljs routeros">Host github.comHostName github.comUser cloverhuangIdentityFile ~/.ssh/id_rsaHost gitlab.comHostName gitlab.comUser perryIdentityFile ~/.ssh/oschina_id_rsa</code></pre><p>Host example                 # 关键词<br>HostName example.com         # 主机地址<br>User root                    # 用户名<br>IdentityFile ~/.ssh/id_rsa   # 认证文件<br>Port 22                      # 指定端口</p><p>192.168.10.?表示匹配 192.168.0.[0-9] 的 IP,是内网服务器的地址,使用localtest</p><p>​ git.oschina.net oschina2</p><p>​ 通过执行 <code>$ ssh example</code> 我就可以登录我的服务器。而不需要敲更多的命令 <code>$ ssh root@example.com</code>。又如我们想要向服务器传文件 $ scp a.txt example:/home/user_name。比以前方便多了。</p><p>作者：欧阳馒头<br>链接：<a href="https://www.jianshu.com/p/9c06e8de3eba" target="_blank" rel="noopener">https://www.jianshu.com/p/9c06e8de3eba</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>]]></content>
     
     
     <categories>
@@ -254,11 +279,11 @@
   
   
   <entry>
-    <title>Git配置多个SSH KEY</title>
-    <link href="/2020/05/15/git-ssh-key/"/>
-    <url>/2020/05/15/git-ssh-key/</url>
+    <title>Git常用命令</title>
+    <link href="/2020/05/15/git-cli/"/>
+    <url>/2020/05/15/git-cli/</url>
     
-    <content type="html"><![CDATA[<p>###生成ssh key</p><pre><code class="hljs arcade">ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa -C <span class="hljs-string">"xx-email"</span>ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_gitlab -C <span class="hljs-string">"xx-email"</span></code></pre><p>上面的id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出 <code>id_rsa</code> 和id_rsa_gitlab.pub两个文件，id_rsa.pub里保存的就是我们要使用的key。</p><p>​ 上面的oschina2_id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出oschina2_id_rsa和oschina2_id_rsa.pub两个文件，oschina2_id_rsa.pub里保存的就是我们要使用的key。</p><p>查看你的 public key，并把他添加到码云（Gitee.com）,复制内容填入即可 SSH key添加地址</p><pre><code class="hljs awk">cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<span class="hljs-comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></code></pre><p>###配置config文件<br>配置<code>.ssh</code>文件下的config文件</p><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/.ssh/</span>cat config</code></pre><p>config文件内容</p><pre><code class="hljs routeros">Host github.comHostName github.comUser cloverhuangIdentityFile ~/.ssh/id_rsaHost gitlab.comHostName gitlab.comUser perryIdentityFile ~/.ssh/oschina_id_rsa</code></pre><p>Host example                 # 关键词<br>HostName example.com         # 主机地址<br>User root                    # 用户名<br>IdentityFile ~/.ssh/id_rsa   # 认证文件<br>Port 22                      # 指定端口</p><p>192.168.10.?表示匹配 192.168.0.[0-9] 的 IP,是内网服务器的地址,使用localtest</p><p>​ git.oschina.net oschina2</p><p>​ 通过执行 <code>$ ssh example</code> 我就可以登录我的服务器。而不需要敲更多的命令 <code>$ ssh root@example.com</code>。又如我们想要向服务器传文件 $ scp a.txt example:/home/user_name。比以前方便多了。</p><p>作者：欧阳馒头<br>链接：<a href="https://www.jianshu.com/p/9c06e8de3eba" target="_blank" rel="noopener">https://www.jianshu.com/p/9c06e8de3eba</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Git常用操作"><a href="#Git常用操作" class="headerlink" title="Git常用操作"></a>Git常用操作</h1><blockquote><p>相关文章：<br><a href="http://blog.csdn.net/u013374164/article/details/78422968" target="_blank" rel="noopener">Git使用手册：生成SSH Key</a><br><a href="http://blog.csdn.net/u013374164/article/details/78423342" target="_blank" rel="noopener">Git使用手册：使用SSH Key及配置SSH key公钥</a><br><a href="http://blog.csdn.net/u013374164/article/details/78644576" target="_blank" rel="noopener">Git使用手册：工作区、暂存区、本地仓库、远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git clone 克隆下载远程仓库项目工程到本地工作区</a><br><a href="https://blog.csdn.net/ahxieqi/article/details/93628438" target="_blank" rel="noopener">Git使用手册：git clone 速度很慢的解决方法</a><br><a href="http://blog.csdn.net/u013374164/article/details/78645080" target="_blank" rel="noopener">Git使用手册：git branch 分支操作、创建分支、查看分支、删除分支、删除本地分支、删除远程分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78830866" target="_blank" rel="noopener">Git使用手册：git checkout 创建分支、切换分支</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831273" target="_blank" rel="noopener">Git使用手册：git status 查看本地工作区、暂存区中文件的修改状态</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831438" target="_blank" rel="noopener">Git使用手册：git diff 、 git add 、 git diff –cached 命令详解</a><br><a href="http://blog.csdn.net/u013374164/article/details/78831480" target="_blank" rel="noopener">Git使用手册：git commit -m/-am/-a -m 提交文件至本地仓库区</a><br><a href="http://blog.csdn.net/u013374164/article/details/78832825" target="_blank" rel="noopener">Git使用手册：git fetch 将远程仓库的分支及分支最新版本代码拉取到本地</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833173" target="_blank" rel="noopener">Git使用手册：git pull origin 拉取代码到本地，解决拉取代码时发生的文件冲突</a><br><a href="http://blog.csdn.net/u013374164/article/details/78833317" target="_blank" rel="noopener">Git使用手册：git push 推送提交本地仓库代码文件到远程仓库</a><br><a href="http://blog.csdn.net/u013374164/article/details/79091677" target="_blank" rel="noopener">Git使用手册/Git教程：git log 查看git提交日志记录</a></p></blockquote><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><pre><code>- windows下载git-scm- Linux使用sudo apt-get install git或者yum install git</code></pre><h4 id="克隆代码"><a href="#克隆代码" class="headerlink" title="克隆代码"></a>克隆代码</h4><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">URL</span></code></pre><p>克隆代码两种方式</p><ul><li><p>HTTPS，每次都需要输入账号和密码</p></li><li><p>SSH，需要添加公钥（推荐方式）<br>生成密钥 <code>ssh-keygen -t rsa</code>，<br>将公钥( ~/.ssh/id_rsa.pub)粘贴到Gitlab &gt;&gt; User Settings &gt;&gt; SSH Keys</p></li></ul><pre><code class="hljs crmsh">tips: 快速下载网上开源项目，使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>* depth用于指定克隆深度，<span class="hljs-attr">depth=</span><span class="hljs-number">1</span>表示只克隆最近一次commit * 使用git <span class="hljs-keyword">clone</span> <span class="hljs-title">--depth</span>=<span class="hljs-number">1</span>不会下载 Git 协作的历史记录，这样可以大大加快克隆的速度</code></pre><h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>一般工作流程如下：</p><pre><code class="hljs properties"><span class="hljs-attr">git</span> <span class="hljs-string">pull origin master</span><span class="hljs-attr">git</span> <span class="hljs-string">checkout -b dev // 或者git pull origin master:dev</span><span class="hljs-attr">vim</span> <span class="hljs-string">test.py //修改代码</span><span class="hljs-attr">git</span> <span class="hljs-string">status</span><span class="hljs-attr">git</span> <span class="hljs-string">add test.py</span><span class="hljs-attr">git</span> <span class="hljs-string">status</span><span class="hljs-attr">git</span> <span class="hljs-string">commit -m "fix issue #1"</span><span class="hljs-attr">git</span> <span class="hljs-string">push origin dev</span><span class="hljs-meta">在gitlab上点击提交request</span> <span class="hljs-string">merge, 发给组员review后再merge</span></code></pre><p>状态：<br><a href="./images/areas.png">工作区,暂存区,仓库</a></p><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000" target="_blank" rel="noopener">参考廖雪峰教程</a></p><h4 id="拉取和合并"><a href="#拉取和合并" class="headerlink" title="拉取和合并"></a>拉取和合并</h4><p>git fetch和git pull区别：</p><p>git fetch是从远程获取最新到本地，不会自动merge.而git pull则从远程获取最新版本并且merge到本地</p><pre><code class="hljs cos">git fetch origin master:tmp <span class="hljs-comment">//从远程仓库master分支获取最新到本地tmp分支</span>git diff tmp <span class="hljs-comment">//将当前分支和tmp进行对比</span>git <span class="hljs-keyword">merge</span> tmp <span class="hljs-comment">//合并master分支到当前分支</span><span class="hljs-comment">//以上相当于一条命令： </span>git pull origin master</code></pre><p>*使用git fetch更安全，可以选择是否合并</p><h3 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h3><h4 id="遇到代码冲突"><a href="#遇到代码冲突" class="headerlink" title="遇到代码冲突"></a>遇到代码冲突</h4><p>场景：使用git merge或者git pull遇到冲突，无法自动合并。如下：</p><pre><code class="hljs pgsql">Auto-merging readme.txt<span class="hljs-keyword">CONFLICT</span> (content): Merge <span class="hljs-keyword">conflict</span> <span class="hljs-keyword">in</span> readme.txtAutomatic merge failed; fix conflicts <span class="hljs-keyword">and</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">commit</span> the result.</code></pre><p>参考文档：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">解决冲突</a></p><h4 id="突然接到需求"><a href="#突然接到需求" class="headerlink" title="突然接到需求"></a>突然接到需求</h4><p>场景：你在写某个功能，但还没完成不想提交。突然接到需求，需要切到某个分支fix某个bug.</p><pre><code class="hljs cpp">git stash <span class="hljs-comment">// 保存当前修改进度</span>git stash <span class="hljs-built_in">list</span> <span class="hljs-comment">// 查看所有进度列表</span>git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>]]></content>
     
     
     <categories>
@@ -329,31 +354,6 @@
   
   
   <entry>
-    <title>模拟器调试：Genymotion安卓模拟器</title>
-    <link href="/2020/05/01/debug-genymotion/"/>
-    <url>/2020/05/01/debug-genymotion/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://www.jianshu.com/p/289534984fd9" target="_blank" rel="noopener">文档mac安装Genymotion模拟器教程</a><br><a href="https://www.cnblogs.com/JoannaQ/p/3987408.html" target="_blank" rel="noopener">Remote Debugging Chrome 结合Genymotion模拟器的移动端web真机调试</a></p></blockquote><p> Genymotion是一套完整的工具，支持Windows、Linux和MacOS等操作系统，它提供了Android虚拟环境。它简直就是开发者、测试人员、推销者甚至是游戏玩家的福音。</p><p>打开Genymotion，下载指定的安卓版本模拟器</p><p><img src="/imgs/001.png" srcset="/img/loading.gif" alt="1"></p><p>点击对应的devices设备打开模拟器进行调试</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端调试</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>调试</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>模拟器：Xcode IOS模拟器</title>
     <link href="/2020/05/01/debug-xcode-simulator/"/>
     <url>/2020/05/01/debug-xcode-simulator/</url>
@@ -379,11 +379,11 @@
   
   
   <entry>
-    <title>浏览器调试：Safari连接手机调试</title>
-    <link href="/2020/05/01/debug-safari/"/>
-    <url>/2020/05/01/debug-safari/</url>
+    <title>模拟器调试：Genymotion安卓模拟器</title>
+    <link href="/2020/05/01/debug-genymotion/"/>
+    <url>/2020/05/01/debug-genymotion/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://blog.csdn.net/guoyuyanmen/article/details/52485439" target="_blank" rel="noopener">如何使用电脑上的Safari浏览器来调试ios手机上的移动端页面</a></p></blockquote><h2 id="Safari调试iPhone-app-web页面"><a href="#Safari调试iPhone-app-web页面" class="headerlink" title="Safari调试iPhone app web页面"></a>Safari调试iPhone app web页面</h2><h3 id="Safari设置"><a href="#Safari设置" class="headerlink" title="Safari设置"></a>Safari设置</h3><p>打开Safari偏好者设置，选中“高级菜单”，在页面最下方看到“在菜单中显示开发菜单”的复选框，在复选框内打钩，这样设置完毕就能在Safari菜单中看到开发菜单了<br><img src="/imgs/011.png" srcset="/img/loading.gif" alt="1"></p><h3 id="iPhone设置"><a href="#iPhone设置" class="headerlink" title="iPhone设置"></a>iPhone设置</h3><p>打开iPhone手机设置app 选择Safari，找到高级选项，有JavaScript开关web检查器开关，将两个开关都打开<br><img src="/imgs/012.png" srcset="/img/loading.gif" alt="1"></p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>到此，准备工作完成。这时候将iPhone链接到mac上，打开Safari浏览器，运行手机app里面的web页面，在开发菜单中选择连接的手机，找到调试的网页，就能在Safari里面调试了<br><img src="/imgs/013.png" srcset="/img/loading.gif" alt="1"></p><h3 id="Safari控制台"><a href="#Safari控制台" class="headerlink" title="Safari控制台"></a>Safari控制台</h3><p>在Safari打开开发者模式<br>1.在Safari中鼠标右键，选择检查元素，就可以看见Safari控制台了。<br>2.如果没有检查元素选项，在Safari设置打开开发选项</p><h2 id="未显示可调试的设备，对应处理方式"><a href="#未显示可调试的设备，对应处理方式" class="headerlink" title="未显示可调试的设备，对应处理方式"></a>未显示可调试的设备，对应处理方式</h2><p>版本不兼容问题，没有对应的系统设备的模拟器，需要先在xcode添加，参考以下文档<br>模拟器：mac xcode simulator模拟ios调试<br><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://www.jianshu.com/p/289534984fd9" target="_blank" rel="noopener">文档mac安装Genymotion模拟器教程</a><br><a href="https://www.cnblogs.com/JoannaQ/p/3987408.html" target="_blank" rel="noopener">Remote Debugging Chrome 结合Genymotion模拟器的移动端web真机调试</a></p></blockquote><p> Genymotion是一套完整的工具，支持Windows、Linux和MacOS等操作系统，它提供了Android虚拟环境。它简直就是开发者、测试人员、推销者甚至是游戏玩家的福音。</p><p>打开Genymotion，下载指定的安卓版本模拟器</p><p><img src="/imgs/001.png" srcset="/img/loading.gif" alt="1"></p><p>点击对应的devices设备打开模拟器进行调试</p>]]></content>
     
     
     <categories>
@@ -409,6 +409,31 @@
     <url>/2020/05/01/debug-chrome/</url>
     
     <content type="html"><![CDATA[<p>Chrome调试安卓手机上的移动端页面</p><h2 id="一、手机开发者选项"><a href="#一、手机开发者选项" class="headerlink" title="一、手机开发者选项"></a>一、手机开发者选项</h2><p>首先你得打开手机的开发者选项，确保USB调试和通过USB验证应用程序保持打开状态，如图所示<br><img src="/imgs/003.png" srcset="/img/loading.gif" alt="1"></p><h2 id="二、浏览器链接远程设备（手机）"><a href="#二、浏览器链接远程设备（手机）" class="headerlink" title="二、浏览器链接远程设备（手机）"></a>二、浏览器链接远程设备（手机）</h2><p>打开谷歌浏览器，调出控制台，点击如图所示这个3旁边的3个点，这里面有更多的功能，点击More tools<br><img src="/imgs/004.jpg" srcset="/img/loading.gif" alt="1"><br>在之后的页面中discover USB devices选项打钩，用你数据链连接你的电脑和手机，确认后,左侧devices会显示连接设备,代表链接成功。<br><img src="/imgs/007.png" srcset="/img/loading.gif" alt="1"></p><h2 id="三、打开调试控制台"><a href="#三、打开调试控制台" class="headerlink" title="三、打开调试控制台"></a>三、打开调试控制台</h2><p>在电脑上的谷歌浏览器输入这个网址chrome://inspect/<br><img src="/imgs/008.png" srcset="/img/loading.gif" alt="1"></p><h2 id="四、调试"><a href="#四、调试" class="headerlink" title="四、调试"></a>四、调试</h2><p>手机端打开界面（部分app应用不支持，可用谷歌浏览器打开界面），输入你想要调试的网页，我一般都是把网页放到我的本地服务器，在手机浏览器上输入我的本地网址。假设当前我们打开的是一个百度页面，控制台会显示对应的页面，点击inspect就可以审查手机页面了。<br><img src="/imgs/009.jpg" srcset="/img/loading.gif" alt="1"><br>审查方式就跟平常直接在PC上调试网页一样<br><img src="/imgs/010.png" srcset="/img/loading.gif" alt="1"></p><h2 id="五、无法调试，处理方案"><a href="#五、无法调试，处理方案" class="headerlink" title="五、无法调试，处理方案"></a>五、无法调试，处理方案</h2><p>访问 <code>chrome://inspect/#devices</code>出现空白页或出现404,用以下方式排查可基本解决问题<br>1.能够访问google.com<br>2.手机开启usb调试模式<br>3.允许电脑访问手机<br>4.清除一下这里的缓存 chrome://appcache-internals/#</p><h2 id="话外：Chrome调试IOS手机上的移动端页面"><a href="#话外：Chrome调试IOS手机上的移动端页面" class="headerlink" title="话外：Chrome调试IOS手机上的移动端页面"></a>话外：Chrome调试IOS手机上的移动端页面</h2><p>参考官方文档：<a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started" target="_blank" rel="noopener">https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端调试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>调试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>浏览器调试：Safari连接手机调试</title>
+    <link href="/2020/05/01/debug-safari/"/>
+    <url>/2020/05/01/debug-safari/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://blog.csdn.net/guoyuyanmen/article/details/52485439" target="_blank" rel="noopener">如何使用电脑上的Safari浏览器来调试ios手机上的移动端页面</a></p></blockquote><h2 id="Safari调试iPhone-app-web页面"><a href="#Safari调试iPhone-app-web页面" class="headerlink" title="Safari调试iPhone app web页面"></a>Safari调试iPhone app web页面</h2><h3 id="Safari设置"><a href="#Safari设置" class="headerlink" title="Safari设置"></a>Safari设置</h3><p>打开Safari偏好者设置，选中“高级菜单”，在页面最下方看到“在菜单中显示开发菜单”的复选框，在复选框内打钩，这样设置完毕就能在Safari菜单中看到开发菜单了<br><img src="/imgs/011.png" srcset="/img/loading.gif" alt="1"></p><h3 id="iPhone设置"><a href="#iPhone设置" class="headerlink" title="iPhone设置"></a>iPhone设置</h3><p>打开iPhone手机设置app 选择Safari，找到高级选项，有JavaScript开关web检查器开关，将两个开关都打开<br><img src="/imgs/012.png" srcset="/img/loading.gif" alt="1"></p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>到此，准备工作完成。这时候将iPhone链接到mac上，打开Safari浏览器，运行手机app里面的web页面，在开发菜单中选择连接的手机，找到调试的网页，就能在Safari里面调试了<br><img src="/imgs/013.png" srcset="/img/loading.gif" alt="1"></p><h3 id="Safari控制台"><a href="#Safari控制台" class="headerlink" title="Safari控制台"></a>Safari控制台</h3><p>在Safari打开开发者模式<br>1.在Safari中鼠标右键，选择检查元素，就可以看见Safari控制台了。<br>2.如果没有检查元素选项，在Safari设置打开开发选项</p><h2 id="未显示可调试的设备，对应处理方式"><a href="#未显示可调试的设备，对应处理方式" class="headerlink" title="未显示可调试的设备，对应处理方式"></a>未显示可调试的设备，对应处理方式</h2><p>版本不兼容问题，没有对应的系统设备的模拟器，需要先在xcode添加，参考以下文档<br>模拟器：mac xcode simulator模拟ios调试<br><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>]]></content>
     
     
     <categories>
