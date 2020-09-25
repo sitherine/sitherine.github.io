@@ -133,7 +133,7 @@
     <link href="/2020/05/17/PM2/"/>
     <url>/2020/05/17/PM2/</url>
     
-    <content type="html"><![CDATA[<p>pm2 start build/dev-server.js<br>pm2 start build/dev-server.js –name XXX<br><a href="https://www.cnblogs.com/lxg0/p/7771229.html" target="_blank" rel="noopener">https://www.cnblogs.com/lxg0/p/7771229.html</a></p><p>pm2是一个带有负载均衡功能的 Node 应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。<br>它非常适合IaaS结构，但不要把它用于PaaS方案（随后将开发Paas的解决方案）.</p><p>主要特性：</p><p>内建负载均衡（使用 Node cluster 集群模块）</p><p>后台运行</p><p>0 秒停机重载</p><p>具有 Ubuntu 和 CentOS 的启动脚本</p><p>停止不稳定的进程（避免无限循环）</p><p>控制台检测</p><p>提供 HTTP API</p><p>远程控制和实时的接口 API（Nodejs 模块，允许和 PM2 进程管理器交互）</p><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">app</span></code></pre><pre><code class="hljs crmsh">pm2 <span class="hljs-literal">start</span> app.js</code></pre><p><a href="http://www.imooc.com/read/26/article/234" target="_blank" rel="noopener">http://www.imooc.com/read/26/article/234</a></p><p>补充：PM2 常用命令</p><p>通过 PM2 跑服务器的时候，是可以进行集群配置的，也就是指定在几个核上运行几个进程：</p><p>pm2 start app.js -i 2<br>-i 后面跟的 2 表示启动 2 个 server 实例，如果输入 0 的话，则按照当前服务器实际的 CPU 核数来启动多个 server，启动后，我们通过 pm2 ls 来看看已经启动的实例</p><p>PM2 实时扩容集群<br>如果发现线上的服务响应比较吃力，而 CPU 核数没有吃满的话，我们可以实时扩容集群，通过 scale 命令来实现，比如：</p><p>pm2 scale app +1</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>相关文章<br><a href="https://www.jianshu.com/p/96a019cdb77e" target="_blank" rel="noopener">pm2启动npm命令</a><br><a href="https://www.cnblogs.com/lxg0/p/7771229.html" target="_blank" rel="noopener">PM2来部署nodejs服务器永久开启</a></p></blockquote><pre><code class="hljs pgsql">pm2 <span class="hljs-keyword">start</span> build/dev-<span class="hljs-keyword">server</span>.js pm2 <span class="hljs-keyword">start</span> build/dev-<span class="hljs-keyword">server</span>.js <span class="hljs-comment">--name XXX</span></code></pre><p>pm2是一个带有负载均衡功能的 Node 应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。<br>它非常适合IaaS结构，但不要把它用于PaaS方案（随后将开发Paas的解决方案）.</p><p>主要特性：</p><p>内建负载均衡（使用 Node cluster 集群模块）</p><p>后台运行</p><p>0 秒停机重载</p><p>具有 Ubuntu 和 CentOS 的启动脚本</p><p>停止不稳定的进程（避免无限循环）</p><p>控制台检测</p><p>提供 HTTP API</p><p>远程控制和实时的接口 API（Nodejs 模块，允许和 PM2 进程管理器交互）</p><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">app</span></code></pre><pre><code class="hljs crmsh">pm2 <span class="hljs-literal">start</span> app.js</code></pre><p><a href="http://www.imooc.com/read/26/article/234" target="_blank" rel="noopener">http://www.imooc.com/read/26/article/234</a></p><p>补充：PM2 常用命令</p><p>通过 PM2 跑服务器的时候，是可以进行集群配置的，也就是指定在几个核上运行几个进程：</p><p>pm2 start app.js -i 2<br>-i 后面跟的 2 表示启动 2 个 server 实例，如果输入 0 的话，则按照当前服务器实际的 CPU 核数来启动多个 server，启动后，我们通过 pm2 ls 来看看已经启动的实例</p><p>PM2 实时扩容集群<br>如果发现线上的服务响应比较吃力，而 CPU 核数没有吃满的话，我们可以实时扩容集群，通过 scale 命令来实现，比如：</p><p>pm2 scale app +1</p>]]></content>
     
     
     <categories>
@@ -254,31 +254,6 @@
   
   
   <entry>
-    <title>Git配置多个SSH KEY</title>
-    <link href="/2020/05/15/git-ssh-key/"/>
-    <url>/2020/05/15/git-ssh-key/</url>
-    
-    <content type="html"><![CDATA[<p>###生成ssh key</p><pre><code class="hljs arcade">ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa -C <span class="hljs-string">"xx-email"</span>ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_gitlab -C <span class="hljs-string">"xx-email"</span></code></pre><p>上面的id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出 <code>id_rsa</code> 和id_rsa_gitlab.pub两个文件，id_rsa.pub里保存的就是我们要使用的key。</p><p>​ 上面的oschina2_id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出oschina2_id_rsa和oschina2_id_rsa.pub两个文件，oschina2_id_rsa.pub里保存的就是我们要使用的key。</p><p>查看你的 public key，并把他添加到码云（Gitee.com）,复制内容填入即可 SSH key添加地址</p><pre><code class="hljs awk">cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<span class="hljs-comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></code></pre><p>###配置config文件<br>配置<code>.ssh</code>文件下的config文件</p><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/.ssh/</span>cat config</code></pre><p>config文件内容</p><pre><code class="hljs routeros">Host github.comHostName github.comUser cloverhuangIdentityFile ~/.ssh/id_rsaHost gitlab.comHostName gitlab.comUser perryIdentityFile ~/.ssh/oschina_id_rsa</code></pre><p>Host example                 # 关键词<br>HostName example.com         # 主机地址<br>User root                    # 用户名<br>IdentityFile ~/.ssh/id_rsa   # 认证文件<br>Port 22                      # 指定端口</p><p>192.168.10.?表示匹配 192.168.0.[0-9] 的 IP,是内网服务器的地址,使用localtest</p><p>​ git.oschina.net oschina2</p><p>​ 通过执行 <code>$ ssh example</code> 我就可以登录我的服务器。而不需要敲更多的命令 <code>$ ssh root@example.com</code>。又如我们想要向服务器传文件 $ scp a.txt example:/home/user_name。比以前方便多了。</p><p>作者：欧阳馒头<br>链接：<a href="https://www.jianshu.com/p/9c06e8de3eba" target="_blank" rel="noopener">https://www.jianshu.com/p/9c06e8de3eba</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Git开发协作</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Git</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Git常用命令</title>
     <link href="/2020/05/15/git-cli/"/>
     <url>/2020/05/15/git-cli/</url>
@@ -304,11 +279,36 @@
   
   
   <entry>
+    <title>Git配置多个SSH KEY</title>
+    <link href="/2020/05/15/git-ssh-key/"/>
+    <url>/2020/05/15/git-ssh-key/</url>
+    
+    <content type="html"><![CDATA[<p>###生成ssh key</p><pre><code class="hljs arcade">ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa -C <span class="hljs-string">"xx-email"</span>ssh-keygen -t rsa -f ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_gitlab -C <span class="hljs-string">"xx-email"</span></code></pre><p>上面的id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出 <code>id_rsa</code> 和id_rsa_gitlab.pub两个文件，id_rsa.pub里保存的就是我们要使用的key。</p><p>​ 上面的oschina2_id_rsa就是我们指定的文件名，这时~/.ssh目录下会多出oschina2_id_rsa和oschina2_id_rsa.pub两个文件，oschina2_id_rsa.pub里保存的就是我们要使用的key。</p><p>查看你的 public key，并把他添加到码云（Gitee.com）,复制内容填入即可 SSH key添加地址</p><pre><code class="hljs awk">cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<span class="hljs-comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></code></pre><p>###配置config文件<br>配置<code>.ssh</code>文件下的config文件</p><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/.ssh/</span>cat config</code></pre><p>config文件内容</p><pre><code class="hljs routeros">Host github.comHostName github.comUser cloverhuangIdentityFile ~/.ssh/id_rsaHost gitlab.comHostName gitlab.comUser perryIdentityFile ~/.ssh/oschina_id_rsa</code></pre><p>Host example                 # 关键词<br>HostName example.com         # 主机地址<br>User root                    # 用户名<br>IdentityFile ~/.ssh/id_rsa   # 认证文件<br>Port 22                      # 指定端口</p><p>192.168.10.?表示匹配 192.168.0.[0-9] 的 IP,是内网服务器的地址,使用localtest</p><p>​ git.oschina.net oschina2</p><p>​ 通过执行 <code>$ ssh example</code> 我就可以登录我的服务器。而不需要敲更多的命令 <code>$ ssh root@example.com</code>。又如我们想要向服务器传文件 $ scp a.txt example:/home/user_name。比以前方便多了。</p><p>作者：欧阳馒头<br>链接：<a href="https://www.jianshu.com/p/9c06e8de3eba" target="_blank" rel="noopener">https://www.jianshu.com/p/9c06e8de3eba</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Git开发协作</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git提交规范</title>
     <link href="/2020/05/15/git-commit-reg/"/>
     <url>/2020/05/15/git-commit-reg/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>参考文档：<a href="https://zhuanlan.zhihu.com/p/88870009" target="_blank" rel="noopener">关于 Git 提交这些规范，你都遵守了吗？</a></p></blockquote><p>Git是现在市面上最流行的版本控制工具，书写良好的commit message能大大提高代码维护的效率。但是在日常开发中由于缺少对commit message的约束，导致填写内容随意、质量参差不齐，可读性低亦难以维护。</p><h2 id="约定式提交规范"><a href="#约定式提交规范" class="headerlink" title="约定式提交规范"></a>约定式提交规范</h2><p>现在市面上比较流行的方案是约定式提交规范（Conventional Commits），它受到了Angular提交准则的启发，并在很大程度上以其为依据。约定式提交规范是一种基于提交消息的轻量级约定。</p><p>它提供了一组用于创建清晰的提交历史的简单规则；这使得编写基于规范的自动化工具变得更容易。这个约定与SemVer相吻合，在提交信息中描述新特性、bug 修复和破坏性变更。</p><h2 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h2><p>提交标准格式如下：</p><pre><code class="hljs dts"><span class="hljs-params">&lt;type&gt;</span>(<span class="hljs-params">&lt;scope&gt;</span>): <span class="hljs-params">&lt;subject&gt;</span> <span class="hljs-meta">#header</span><span class="hljs-comment">// 空一行</span><span class="hljs-params">&lt;body&gt;</span><span class="hljs-comment">// 空一行</span><span class="hljs-params">&lt;footer&gt;</span></code></pre><p>翻译成中文：</p><pre><code class="hljs cs">&lt;类型&gt;[可选的作用域]: &lt;描述&gt;<span class="hljs-comment">// 空一行</span>[<span class="hljs-meta">可选的正文</span>]<span class="hljs-comment">// 空一行</span>[<span class="hljs-meta">可选的脚注</span>]</code></pre><h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p><p>feat：新功能（feature）<br>fix：修补bug<br>docs：文档（documentation）<br>style： 格式（不影响代码运行的变动）<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>test：增加测试<br>chore：构建过程或辅助工具的变动</p><p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p><h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p><pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能支持部门的迁移，复制，删除Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>参考文档：<a href="https://zhuanlan.zhihu.com/p/88870009" target="_blank" rel="noopener">关于 Git 提交这些规范，你都遵守了吗？</a></p></blockquote><p>Git是现在市面上最流行的版本控制工具，书写良好的commit message能大大提高代码维护的效率。但是在日常开发中由于缺少对commit message的约束，导致填写内容随意、质量参差不齐，可读性低亦难以维护。</p><h2 id="约定式提交规范"><a href="#约定式提交规范" class="headerlink" title="约定式提交规范"></a>约定式提交规范</h2><p>现在市面上比较流行的方案是约定式提交规范（Conventional Commits），它受到了Angular提交准则的启发，并在很大程度上以其为依据。约定式提交规范是一种基于提交消息的轻量级约定。</p><p>它提供了一组用于创建清晰的提交历史的简单规则；这使得编写基于规范的自动化工具变得更容易。这个约定与SemVer相吻合，在提交信息中描述新特性、bug 修复和破坏性变更。</p><h2 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h2><p>提交标准格式如下：</p><pre><code class="hljs dts"><span class="hljs-params">&lt;type&gt;</span>(<span class="hljs-params">&lt;scope&gt;</span>): <span class="hljs-params">&lt;subject&gt;</span> <span class="hljs-meta">#header</span><span class="hljs-comment">// 空一行</span><span class="hljs-params">&lt;body&gt;</span><span class="hljs-comment">// 空一行</span><span class="hljs-params">&lt;footer&gt;</span></code></pre><p>翻译成中文：</p><pre><code class="hljs cs">&lt;类型&gt;[可选的作用域]: &lt;描述&gt;<span class="hljs-comment">// 空一行</span>[<span class="hljs-meta">可选的正文</span>]<span class="hljs-comment">// 空一行</span>[<span class="hljs-meta">可选的脚注</span>]</code></pre><h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p><p>build:<br>ci: ci相关配置<br>chore：构建过程或辅助工具的变动<br>docs：文档（documentation）<br>feat：新功能（feature）<br>fix：修补bug<br>perf：性能相关<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>revert: 代码回溯<br>style： 格式（不影响代码运行的变动）<br>test：测试相关</p><p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p><h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p><pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能支持部门的迁移，复制，删除Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
     
     
     <categories>
@@ -404,11 +404,11 @@
   
   
   <entry>
-    <title>浏览器调试：Chrome连接手机调试</title>
-    <link href="/2020/05/01/debug-chrome/"/>
-    <url>/2020/05/01/debug-chrome/</url>
+    <title>浏览器调试：Safari连接手机调试</title>
+    <link href="/2020/05/01/debug-safari/"/>
+    <url>/2020/05/01/debug-safari/</url>
     
-    <content type="html"><![CDATA[<p>Chrome调试安卓手机上的移动端页面</p><h2 id="一、手机开发者选项"><a href="#一、手机开发者选项" class="headerlink" title="一、手机开发者选项"></a>一、手机开发者选项</h2><p>首先你得打开手机的开发者选项，确保USB调试和通过USB验证应用程序保持打开状态，如图所示<br><img src="/imgs/003.png" srcset="/img/loading.gif" alt="1"></p><h2 id="二、浏览器链接远程设备（手机）"><a href="#二、浏览器链接远程设备（手机）" class="headerlink" title="二、浏览器链接远程设备（手机）"></a>二、浏览器链接远程设备（手机）</h2><p>打开谷歌浏览器，调出控制台，点击如图所示这个3旁边的3个点，这里面有更多的功能，点击More tools<br><img src="/imgs/004.jpg" srcset="/img/loading.gif" alt="1"><br>在之后的页面中discover USB devices选项打钩，用你数据链连接你的电脑和手机，确认后,左侧devices会显示连接设备,代表链接成功。<br><img src="/imgs/007.png" srcset="/img/loading.gif" alt="1"></p><h2 id="三、打开调试控制台"><a href="#三、打开调试控制台" class="headerlink" title="三、打开调试控制台"></a>三、打开调试控制台</h2><p>在电脑上的谷歌浏览器输入这个网址chrome://inspect/<br><img src="/imgs/008.png" srcset="/img/loading.gif" alt="1"></p><h2 id="四、调试"><a href="#四、调试" class="headerlink" title="四、调试"></a>四、调试</h2><p>手机端打开界面（部分app应用不支持，可用谷歌浏览器打开界面），输入你想要调试的网页，我一般都是把网页放到我的本地服务器，在手机浏览器上输入我的本地网址。假设当前我们打开的是一个百度页面，控制台会显示对应的页面，点击inspect就可以审查手机页面了。<br><img src="/imgs/009.jpg" srcset="/img/loading.gif" alt="1"><br>审查方式就跟平常直接在PC上调试网页一样<br><img src="/imgs/010.png" srcset="/img/loading.gif" alt="1"></p><h2 id="五、无法调试，处理方案"><a href="#五、无法调试，处理方案" class="headerlink" title="五、无法调试，处理方案"></a>五、无法调试，处理方案</h2><p>访问 <code>chrome://inspect/#devices</code>出现空白页或出现404,用以下方式排查可基本解决问题<br>1.能够访问google.com<br>2.手机开启usb调试模式<br>3.允许电脑访问手机<br>4.清除一下这里的缓存 chrome://appcache-internals/#</p><h2 id="话外：Chrome调试IOS手机上的移动端页面"><a href="#话外：Chrome调试IOS手机上的移动端页面" class="headerlink" title="话外：Chrome调试IOS手机上的移动端页面"></a>话外：Chrome调试IOS手机上的移动端页面</h2><p>参考官方文档：<a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started" target="_blank" rel="noopener">https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://blog.csdn.net/guoyuyanmen/article/details/52485439" target="_blank" rel="noopener">如何使用电脑上的Safari浏览器来调试ios手机上的移动端页面</a></p></blockquote><h2 id="Safari调试iPhone-app-web页面"><a href="#Safari调试iPhone-app-web页面" class="headerlink" title="Safari调试iPhone app web页面"></a>Safari调试iPhone app web页面</h2><h3 id="Safari设置"><a href="#Safari设置" class="headerlink" title="Safari设置"></a>Safari设置</h3><p>打开Safari偏好者设置，选中“高级菜单”，在页面最下方看到“在菜单中显示开发菜单”的复选框，在复选框内打钩，这样设置完毕就能在Safari菜单中看到开发菜单了<br><img src="/imgs/011.png" srcset="/img/loading.gif" alt="1"></p><h3 id="iPhone设置"><a href="#iPhone设置" class="headerlink" title="iPhone设置"></a>iPhone设置</h3><p>打开iPhone手机设置app 选择Safari，找到高级选项，有JavaScript开关web检查器开关，将两个开关都打开<br><img src="/imgs/012.png" srcset="/img/loading.gif" alt="1"></p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>到此，准备工作完成。这时候将iPhone链接到mac上，打开Safari浏览器，运行手机app里面的web页面，在开发菜单中选择连接的手机，找到调试的网页，就能在Safari里面调试了<br><img src="/imgs/013.png" srcset="/img/loading.gif" alt="1"></p><h3 id="Safari控制台"><a href="#Safari控制台" class="headerlink" title="Safari控制台"></a>Safari控制台</h3><p>在Safari打开开发者模式<br>1.在Safari中鼠标右键，选择检查元素，就可以看见Safari控制台了。<br>2.如果没有检查元素选项，在Safari设置打开开发选项</p><h2 id="未显示可调试的设备，对应处理方式"><a href="#未显示可调试的设备，对应处理方式" class="headerlink" title="未显示可调试的设备，对应处理方式"></a>未显示可调试的设备，对应处理方式</h2><p>版本不兼容问题，没有对应的系统设备的模拟器，需要先在xcode添加，参考以下文档<br>模拟器：mac xcode simulator模拟ios调试<br><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>]]></content>
     
     
     <categories>
@@ -429,11 +429,11 @@
   
   
   <entry>
-    <title>浏览器调试：Safari连接手机调试</title>
-    <link href="/2020/05/01/debug-safari/"/>
-    <url>/2020/05/01/debug-safari/</url>
+    <title>浏览器调试：Chrome连接手机调试</title>
+    <link href="/2020/05/01/debug-chrome/"/>
+    <url>/2020/05/01/debug-chrome/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>参考文档<br><a href="https://blog.csdn.net/guoyuyanmen/article/details/52485439" target="_blank" rel="noopener">如何使用电脑上的Safari浏览器来调试ios手机上的移动端页面</a></p></blockquote><h2 id="Safari调试iPhone-app-web页面"><a href="#Safari调试iPhone-app-web页面" class="headerlink" title="Safari调试iPhone app web页面"></a>Safari调试iPhone app web页面</h2><h3 id="Safari设置"><a href="#Safari设置" class="headerlink" title="Safari设置"></a>Safari设置</h3><p>打开Safari偏好者设置，选中“高级菜单”，在页面最下方看到“在菜单中显示开发菜单”的复选框，在复选框内打钩，这样设置完毕就能在Safari菜单中看到开发菜单了<br><img src="/imgs/011.png" srcset="/img/loading.gif" alt="1"></p><h3 id="iPhone设置"><a href="#iPhone设置" class="headerlink" title="iPhone设置"></a>iPhone设置</h3><p>打开iPhone手机设置app 选择Safari，找到高级选项，有JavaScript开关web检查器开关，将两个开关都打开<br><img src="/imgs/012.png" srcset="/img/loading.gif" alt="1"></p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>到此，准备工作完成。这时候将iPhone链接到mac上，打开Safari浏览器，运行手机app里面的web页面，在开发菜单中选择连接的手机，找到调试的网页，就能在Safari里面调试了<br><img src="/imgs/013.png" srcset="/img/loading.gif" alt="1"></p><h3 id="Safari控制台"><a href="#Safari控制台" class="headerlink" title="Safari控制台"></a>Safari控制台</h3><p>在Safari打开开发者模式<br>1.在Safari中鼠标右键，选择检查元素，就可以看见Safari控制台了。<br>2.如果没有检查元素选项，在Safari设置打开开发选项</p><h2 id="未显示可调试的设备，对应处理方式"><a href="#未显示可调试的设备，对应处理方式" class="headerlink" title="未显示可调试的设备，对应处理方式"></a>未显示可调试的设备，对应处理方式</h2><p>版本不兼容问题，没有对应的系统设备的模拟器，需要先在xcode添加，参考以下文档<br>模拟器：mac xcode simulator模拟ios调试<br><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>]]></content>
+    <content type="html"><![CDATA[<p>Chrome调试安卓手机上的移动端页面</p><h2 id="一、手机开发者选项"><a href="#一、手机开发者选项" class="headerlink" title="一、手机开发者选项"></a>一、手机开发者选项</h2><p>首先你得打开手机的开发者选项，确保USB调试和通过USB验证应用程序保持打开状态，如图所示<br><img src="/imgs/003.png" srcset="/img/loading.gif" alt="1"></p><h2 id="二、浏览器链接远程设备（手机）"><a href="#二、浏览器链接远程设备（手机）" class="headerlink" title="二、浏览器链接远程设备（手机）"></a>二、浏览器链接远程设备（手机）</h2><p>打开谷歌浏览器，调出控制台，点击如图所示这个3旁边的3个点，这里面有更多的功能，点击More tools<br><img src="/imgs/004.jpg" srcset="/img/loading.gif" alt="1"><br>在之后的页面中discover USB devices选项打钩，用你数据链连接你的电脑和手机，确认后,左侧devices会显示连接设备,代表链接成功。<br><img src="/imgs/007.png" srcset="/img/loading.gif" alt="1"></p><h2 id="三、打开调试控制台"><a href="#三、打开调试控制台" class="headerlink" title="三、打开调试控制台"></a>三、打开调试控制台</h2><p>在电脑上的谷歌浏览器输入这个网址chrome://inspect/<br><img src="/imgs/008.png" srcset="/img/loading.gif" alt="1"></p><h2 id="四、调试"><a href="#四、调试" class="headerlink" title="四、调试"></a>四、调试</h2><p>手机端打开界面（部分app应用不支持，可用谷歌浏览器打开界面），输入你想要调试的网页，我一般都是把网页放到我的本地服务器，在手机浏览器上输入我的本地网址。假设当前我们打开的是一个百度页面，控制台会显示对应的页面，点击inspect就可以审查手机页面了。<br><img src="/imgs/009.jpg" srcset="/img/loading.gif" alt="1"><br>审查方式就跟平常直接在PC上调试网页一样<br><img src="/imgs/010.png" srcset="/img/loading.gif" alt="1"></p><h2 id="五、无法调试，处理方案"><a href="#五、无法调试，处理方案" class="headerlink" title="五、无法调试，处理方案"></a>五、无法调试，处理方案</h2><p>访问 <code>chrome://inspect/#devices</code>出现空白页或出现404,用以下方式排查可基本解决问题<br>1.能够访问google.com<br>2.手机开启usb调试模式<br>3.允许电脑访问手机<br>4.清除一下这里的缓存 chrome://appcache-internals/#</p><h2 id="话外：Chrome调试IOS手机上的移动端页面"><a href="#话外：Chrome调试IOS手机上的移动端页面" class="headerlink" title="话外：Chrome调试IOS手机上的移动端页面"></a>话外：Chrome调试IOS手机上的移动端页面</h2><p>参考官方文档：<a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started" target="_blank" rel="noopener">https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started</a></p>]]></content>
     
     
     <categories>

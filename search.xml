@@ -96,7 +96,14 @@ context
   <entry>
     <title>PM2 ---Node 应用进程管理器</title>
     <url>/2020/05/17/PM2/</url>
-    <content><![CDATA[<p>pm2 start build/dev-server.js<br>pm2 start build/dev-server.js –name XXX<br><a href="https://www.cnblogs.com/lxg0/p/7771229.html" target="_blank" rel="noopener">https://www.cnblogs.com/lxg0/p/7771229.html</a></p>
+    <content><![CDATA[<blockquote>
+<p>相关文章<br><a href="https://www.jianshu.com/p/96a019cdb77e" target="_blank" rel="noopener">pm2启动npm命令</a><br><a href="https://www.cnblogs.com/lxg0/p/7771229.html" target="_blank" rel="noopener">PM2来部署nodejs服务器永久开启</a></p>
+</blockquote>
+<pre><code class="hljs pgsql">pm2 <span class="hljs-keyword">start</span> build/dev-<span class="hljs-keyword">server</span>.js 
+pm2 <span class="hljs-keyword">start</span> build/dev-<span class="hljs-keyword">server</span>.js <span class="hljs-comment">--name XXX</span></code></pre>
+
+
+
 <p>pm2是一个带有负载均衡功能的 Node 应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。<br>它非常适合IaaS结构，但不要把它用于PaaS方案（随后将开发Paas的解决方案）.</p>
 <p>主要特性：</p>
 <p>内建负载均衡（使用 Node cluster 集群模块）</p>
@@ -129,17 +136,17 @@ context
       </tags>
   </entry>
   <entry>
-    <title>代理调试Charles</title>
-    <url>/2020/09/15/debug-charles/</url>
+    <title>前端缓存</title>
+    <url>/2020/09/15/cache-front/</url>
     <content><![CDATA[<blockquote>
-<p>参考文档<br><a href="https://cloud.tencent.com/developer/article/1335298" target="_blank" rel="noopener">解决Charles https抓包显示<unknown></a><br><a href="https://zhuanlan.zhihu.com/p/35498250" target="_blank" rel="noopener">Charles抓https显示unknown解决方法</a></p>
+<p>文章参考<br><a href="https://learnku.com/articles/43143" target="_blank" rel="noopener">[故事] 浏览器缓存原理你真的懂吗？一篇漫画故事带你理解透顶！</a></p>
 </blockquote>
 ]]></content>
       <categories>
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>调试</tag>
+        <tag>缓存</tag>
       </tags>
   </entry>
   <entry>
@@ -179,17 +186,22 @@ context
       </tags>
   </entry>
   <entry>
-    <title>前端缓存</title>
-    <url>/2020/09/15/cache-front/</url>
+    <title>模拟器：Xcode IOS模拟器</title>
+    <url>/2020/05/01/debug-xcode-simulator/</url>
     <content><![CDATA[<blockquote>
-<p>文章参考<br><a href="https://learnku.com/articles/43143" target="_blank" rel="noopener">[故事] 浏览器缓存原理你真的懂吗？一篇漫画故事带你理解透顶！</a></p>
+<p>参考文档<br><a href="http://www.cocoachina.com/articles/219866" target="_blank" rel="noopener">Xcode 9 —进阶的 iOS Simulator</a><br><a href="https://www.jianshu.com/p/667f434f1c9c" target="_blank" rel="noopener">Xcode9之更好用的iOS Simulator(模拟器)</a><br><a href="https://www.jianshu.com/p/bb1ba50700bc" target="_blank" rel="noopener">Xcode修改模拟器Simulator版本</a><br><a href="https://www.jianshu.com/p/8b7f421c8286" target="_blank" rel="noopener">Xcode中Simulator找不到</a></p>
 </blockquote>
+<p>Apple每一次大的版本更新，都会伴随着编译器的大升级，在Xcode9版本后加入了iOS Simulator(模拟器)。</p>
+<h2 id="第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载"><a href="#第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载" class="headerlink" title="第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载"></a>第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载</h2><p><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟"><a href="#第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟" class="headerlink" title="第二步:打开simulator → hardware → device → 选择ios版本进行模拟"></a>第二步:打开simulator → hardware → device → 选择ios版本进行模拟</h2><p><img src="/imgs/015.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="第三步-打开safari-→-开发-→选择对应的模拟器进行调试"><a href="#第三步-打开safari-→-开发-→选择对应的模拟器进行调试" class="headerlink" title="第三步:打开safari → 开发 →选择对应的模拟器进行调试"></a>第三步:打开safari → 开发 →选择对应的模拟器进行调试</h2><p><img src="/imgs/016.png" srcset="/img/loading.gif" alt="1"></p>
+<h2 id="最后-可以愉快的开始调试了"><a href="#最后-可以愉快的开始调试了" class="headerlink" title="最后:可以愉快的开始调试了"></a>最后:可以愉快的开始调试了</h2><p><img src="/imgs/017.png" srcset="/img/loading.gif" alt="1"></p>
 ]]></content>
       <categories>
         <category>前端调试</category>
       </categories>
       <tags>
-        <tag>缓存</tag>
+        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -212,16 +224,40 @@ context
       </tags>
   </entry>
   <entry>
-    <title>模拟器：Xcode IOS模拟器</title>
-    <url>/2020/05/01/debug-xcode-simulator/</url>
+    <title>代理调试Charles</title>
+    <url>/2020/09/15/debug-charles/</url>
     <content><![CDATA[<blockquote>
-<p>参考文档<br><a href="http://www.cocoachina.com/articles/219866" target="_blank" rel="noopener">Xcode 9 —进阶的 iOS Simulator</a><br><a href="https://www.jianshu.com/p/667f434f1c9c" target="_blank" rel="noopener">Xcode9之更好用的iOS Simulator(模拟器)</a><br><a href="https://www.jianshu.com/p/bb1ba50700bc" target="_blank" rel="noopener">Xcode修改模拟器Simulator版本</a><br><a href="https://www.jianshu.com/p/8b7f421c8286" target="_blank" rel="noopener">Xcode中Simulator找不到</a></p>
+<p>参考文档<br><a href="https://cloud.tencent.com/developer/article/1335298" target="_blank" rel="noopener">解决Charles https抓包显示<unknown></a><br><a href="https://zhuanlan.zhihu.com/p/35498250" target="_blank" rel="noopener">Charles抓https显示unknown解决方法</a></p>
 </blockquote>
-<p>Apple每一次大的版本更新，都会伴随着编译器的大升级，在Xcode9版本后加入了iOS Simulator(模拟器)。</p>
-<h2 id="第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载"><a href="#第一步-打开Xcode-→-preferences-→-components-→选择对应版本模拟器进行下载" class="headerlink" title="第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载"></a>第一步:打开Xcode →  preferences → components →选择对应版本模拟器进行下载</h2><p><img src="/imgs/014.png" srcset="/img/loading.gif" alt="1"></p>
-<h2 id="第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟"><a href="#第二步-打开simulator-→-hardware-→-device-→-选择ios版本进行模拟" class="headerlink" title="第二步:打开simulator → hardware → device → 选择ios版本进行模拟"></a>第二步:打开simulator → hardware → device → 选择ios版本进行模拟</h2><p><img src="/imgs/015.png" srcset="/img/loading.gif" alt="1"></p>
-<h2 id="第三步-打开safari-→-开发-→选择对应的模拟器进行调试"><a href="#第三步-打开safari-→-开发-→选择对应的模拟器进行调试" class="headerlink" title="第三步:打开safari → 开发 →选择对应的模拟器进行调试"></a>第三步:打开safari → 开发 →选择对应的模拟器进行调试</h2><p><img src="/imgs/016.png" srcset="/img/loading.gif" alt="1"></p>
-<h2 id="最后-可以愉快的开始调试了"><a href="#最后-可以愉快的开始调试了" class="headerlink" title="最后:可以愉快的开始调试了"></a>最后:可以愉快的开始调试了</h2><p><img src="/imgs/017.png" srcset="/img/loading.gif" alt="1"></p>
+]]></content>
+      <categories>
+        <category>前端调试</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端调试工具汇总</title>
+    <url>/2020/05/01/debug/</url>
+    <content><![CDATA[<!-- index_img: /debug/default.png -->
+
+<blockquote>
+<p>前端调试模式：模拟器调试，浏览器调试，系统内置调试器，代理调试</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h3 id="模拟器调试"><a href="#模拟器调试" class="headerlink" title="模拟器调试"></a>模拟器调试</h3><p>使用场景：没有现成手机进行还原时，可以跟用户要下系统版本，通过模拟器模拟对应系统进行调试  </p>
+<p>工具：<a href="/2020/05/01/debug-genymotion/">Genymotion安卓模拟器</a>；<a href="/2020/05/01/debug-xcode-simulator/">Xcode IOS模拟器</a></p>
+<h3 id="浏览器调试"><a href="#浏览器调试" class="headerlink" title="浏览器调试"></a>浏览器调试</h3><p>使用场景：有现成手机可以还原问题进行调试时，可以直接链接到PC浏览器调试器进行调试</p>
+<p>工具: <a href="/2020/05/01/debug-chrome/">Chrome连接手机调试</a>；<a href="/2020/05/01/debug-safari/">Safari链接ios手机调试</a></p>
+<h3 id="系统内置调试器"><a href="#系统内置调试器" class="headerlink" title="系统内置调试器"></a>系统内置调试器</h3><p>使用场景：其他手机模拟器无法还原问题，只在客户手机出现该问题，可以用系统内置调试器进行调试</p>
+<p>工具: 系统内嵌vConsole工具</p>
+<h3 id="代理调试"><a href="#代理调试" class="headerlink" title="代理调试"></a>代理调试</h3><p>使用场景：网络封包截取</p>
+<p>工具: 代理工具 Charles</p>
+<p>​         </p>
 ]]></content>
       <categories>
         <category>前端调试</category>
@@ -267,7 +303,7 @@ context
 [<span class="hljs-meta">可选的脚注</span>]</code></pre>
 
 <h2 id="type提交类型说明"><a href="#type提交类型说明" class="headerlink" title="type提交类型说明"></a>type提交类型说明</h2><p>用于说明本次commit的类别，有以下7个主要标识</p>
-<p>feat：新功能（feature）<br>fix：修补bug<br>docs：文档（documentation）<br>style： 格式（不影响代码运行的变动）<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>test：增加测试<br>chore：构建过程或辅助工具的变动</p>
+<p>build:<br>ci: ci相关配置<br>chore：构建过程或辅助工具的变动<br>docs：文档（documentation）<br>feat：新功能（feature）<br>fix：修补bug<br>perf：性能相关<br>refactor：重构（即不是新增功能，也不是修改bug的代码变动）<br>revert: 代码回溯<br>style： 格式（不影响代码运行的变动）<br>test：测试相关</p>
 <p>注意:如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
 <h2 id="git提交示例"><a href="#git提交示例" class="headerlink" title="git提交示例"></a>git提交示例</h2><p>完整的commit message示例</p>
 <pre><code class="hljs angelscript">&lt;feat&gt;(部门模块): 完成部门管理功能
@@ -283,35 +319,6 @@ Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>前端调试工具汇总</title>
-    <url>/2020/05/01/debug/</url>
-    <content><![CDATA[<!-- index_img: /debug/default.png -->
-
-<blockquote>
-<p>前端调试模式：模拟器调试，浏览器调试，系统内置调试器，代理调试</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h3 id="模拟器调试"><a href="#模拟器调试" class="headerlink" title="模拟器调试"></a>模拟器调试</h3><p>使用场景：没有现成手机进行还原时，可以跟用户要下系统版本，通过模拟器模拟对应系统进行调试  </p>
-<p>工具：<a href="/2020/05/01/debug-genymotion/">Genymotion安卓模拟器</a>；<a href="/2020/05/01/debug-xcode-simulator/">Xcode IOS模拟器</a></p>
-<h3 id="浏览器调试"><a href="#浏览器调试" class="headerlink" title="浏览器调试"></a>浏览器调试</h3><p>使用场景：有现成手机可以还原问题进行调试时，可以直接链接到PC浏览器调试器进行调试</p>
-<p>工具: <a href="/2020/05/01/debug-chrome/">Chrome连接手机调试</a>；<a href="/2020/05/01/debug-safari/">Safari链接ios手机调试</a></p>
-<h3 id="系统内置调试器"><a href="#系统内置调试器" class="headerlink" title="系统内置调试器"></a>系统内置调试器</h3><p>使用场景：其他手机模拟器无法还原问题，只在客户手机出现该问题，可以用系统内置调试器进行调试</p>
-<p>工具: 系统内嵌vConsole工具</p>
-<h3 id="代理调试"><a href="#代理调试" class="headerlink" title="代理调试"></a>代理调试</h3><p>使用场景：网络封包截取</p>
-<p>工具: 代理工具 Charles</p>
-<p>​         </p>
-]]></content>
-      <categories>
-        <category>前端调试</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nginx配置详解</title>
     <url>/2020/05/16/nginx/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/bluestorm/p/4574688.html" target="_blank" rel="noopener">https://www.cnblogs.com/bluestorm/p/4574688.html</a></p>
@@ -321,6 +328,35 @@ Close HC<span class="hljs-number">-1121</span></code></pre>]]></content>
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git-init初始化</title>
+    <url>/2020/09/15/git-init/</url>
+    <content><![CDATA[<p>创建新的仓库并绑定<br>…or create a new repository on the command line</p>
+<pre><code class="hljs properties"><span class="hljs-attr">echo</span> <span class="hljs-string">"# blog-create" &gt;&gt; README.md</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">init</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">add README.md</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">commit -m "first commit"</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">branch -M master</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">remote add origin git@github.com:sitherine/blog-create.git</span>
+<span class="hljs-attr">git</span> <span class="hljs-string">push -u origin master</span></code></pre>
+
+<p>已有仓库绑定<br>…or push an existing repository from the command line</p>
+<pre><code class="hljs crmsh">git remote add origin git@github.com:sitherine/blog-create.git
+git branch -M <span class="hljs-literal">master</span>
+git push -u origin <span class="hljs-literal">master</span></code></pre>
+
+<p>仓库换绑（http协议链接转为ssh）</p>
+<pre><code class="hljs dsconfig"><span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">git@</span><span class="hljs-string">github.</span><span class="hljs-string">com:username/</span><span class="hljs-string">repository.</span><span class="hljs-string">git</span></code></pre>
+
+<p>查看当前仓库信息</p>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre>]]></content>
+      <categories>
+        <category>Git开发协作</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -389,32 +425,31 @@ git stash pop <span class="hljs-comment">//从恢复进度</span></code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Git-init初始化</title>
-    <url>/2020/09/15/git-init/</url>
-    <content><![CDATA[<p>创建新的仓库并绑定<br>…or create a new repository on the command line</p>
-<pre><code class="hljs properties"><span class="hljs-attr">echo</span> <span class="hljs-string">"# blog-create" &gt;&gt; README.md</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">init</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">add README.md</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">commit -m "first commit"</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">branch -M master</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">remote add origin git@github.com:sitherine/blog-create.git</span>
-<span class="hljs-attr">git</span> <span class="hljs-string">push -u origin master</span></code></pre>
-
-<p>已有仓库绑定<br>…or push an existing repository from the command line</p>
-<pre><code class="hljs crmsh">git remote add origin git@github.com:sitherine/blog-create.git
-git branch -M <span class="hljs-literal">master</span>
-git push -u origin <span class="hljs-literal">master</span></code></pre>
-
-<p>仓库换绑（http协议链接转为ssh）</p>
-<pre><code class="hljs dsconfig"><span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">git@</span><span class="hljs-string">github.</span><span class="hljs-string">com:username/</span><span class="hljs-string">repository.</span><span class="hljs-string">git</span></code></pre>
-
-<p>查看当前仓库信息</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre>]]></content>
+    <title>iTerm2 Profiles快捷登录ssh</title>
+    <url>/2020/05/16/iTerm/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://blog.csdn.net/Soinice/article/details/97559183" target="_blank" rel="noopener">iTerm2 Profiles快捷登录ssh（自动连接远程服务器）</a><br><a href="https://juejin.im/post/6844903962324238350" target="_blank" rel="noopener">iTerm2摸鱼指北</a></p>
+</blockquote>
+]]></content>
       <categories>
-        <category>Git开发协作</category>
+        <category>终端</category>
       </categories>
       <tags>
-        <tag>Git</tag>
+        <tag>终端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh远程——常见错误处理</title>
+    <url>/2020/09/17/ssh-connect/</url>
+    <content><![CDATA[<blockquote>
+<p>参考文档<br><a href="https://blog.csdn.net/Jdk_yxs/article/details/79001060" target="_blank" rel="noopener">ssh远程报错ssh_exchange_identification: read: Connection reset by peer</a><br><a href="https://blog.csdn.net/lilygg/article/details/86187028" target="_blank" rel="noopener">解决 ssh_exchange_identification: read: Connection reset by peer问题</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>ssh</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -456,34 +491,6 @@ IdentityFile ~/.ssh/oschina_id_rsa</code></pre>
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iTerm2 Profiles快捷登录ssh</title>
-    <url>/2020/05/16/iTerm/</url>
-    <content><![CDATA[<blockquote>
-<p>参考文档<br><a href="https://blog.csdn.net/Soinice/article/details/97559183" target="_blank" rel="noopener">iTerm2 Profiles快捷登录ssh（自动连接远程服务器）</a><br><a href="https://juejin.im/post/6844903962324238350" target="_blank" rel="noopener">iTerm2摸鱼指北</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>终端</category>
-      </categories>
-      <tags>
-        <tag>终端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ssh远程——常见错误处理</title>
-    <url>/2020/09/17/ssh-connect/</url>
-    <content><![CDATA[<blockquote>
-<p>参考文档<br><a href="https://blog.csdn.net/Jdk_yxs/article/details/79001060" target="_blank" rel="noopener">ssh远程报错ssh_exchange_identification: read: Connection reset by peer</a><br><a href="https://blog.csdn.net/lilygg/article/details/86187028" target="_blank" rel="noopener">解决 ssh_exchange_identification: read: Connection reset by peer问题</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>ssh</category>
-      </categories>
-      <tags>
-        <tag>ssh</tag>
       </tags>
   </entry>
 </search>
